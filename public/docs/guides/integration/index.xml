@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BookStore API Documentation</title><link>/docs/guides/integration/</link><description>Recent content on BookStore API Documentation</description><generator>Hugo</generator><language>en-us</language><atom:link href="/docs/guides/integration/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>/docs/guides/integration/best-practices/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/guides/integration/best-practices/</guid><description>&lt;h1 id="best-practices"&gt;Best Practices&lt;a class="anchor" href="#best-practices"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;This guide covers recommended patterns for building reliable, secure, and efficient integrations with the BookStore API.&lt;/p&gt;
+&lt;h2 id="authentication"&gt;Authentication&lt;a class="anchor" href="#authentication"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Store your API key in environment variables, not in source code or config files&lt;/li&gt;
+&lt;li&gt;Use separate API keys for development, staging, and production&lt;/li&gt;
+&lt;li&gt;Use read-only keys whenever write access is not needed&lt;/li&gt;
+&lt;li&gt;Set expiry dates on all API keys and rotate them regularly&lt;/li&gt;
+&lt;li&gt;Revoke keys immediately when a team member leaves&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="error-handling"&gt;Error Handling&lt;a class="anchor" href="#error-handling"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Always check HTTP status codes — never assume a request succeeded&lt;/li&gt;
+&lt;li&gt;Log the &lt;code&gt;requestId&lt;/code&gt; from error responses to help with debugging and support&lt;/li&gt;
+&lt;li&gt;Implement exponential backoff for transient errors (500, 503)&lt;/li&gt;
+&lt;li&gt;Show user-friendly error messages for 4xx errors rather than raw API responses&lt;/li&gt;
+&lt;li&gt;Handle &lt;code&gt;409 Conflict&lt;/code&gt; gracefully by checking for duplicates before creating resources&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="performance"&gt;Performance&lt;a class="anchor" href="#performance"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Use pagination with the maximum &lt;code&gt;perPage&lt;/code&gt; value (100) to reduce API calls when fetching large datasets&lt;/li&gt;
+&lt;li&gt;Cache static data such as category lists, which change infrequently. A 1-hour cache is appropriate.&lt;/li&gt;
+&lt;li&gt;Use the &lt;code&gt;fields&lt;/code&gt; query parameter where supported to request only the fields you need&lt;/li&gt;
+&lt;li&gt;Use webhooks for real-time updates rather than polling the API repeatedly&lt;/li&gt;
+&lt;li&gt;Batch operations where possible using bulk endpoints&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="reliability"&gt;Reliability&lt;a class="anchor" href="#reliability"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Use idempotency keys for POST requests that create orders to prevent duplicate submissions&lt;/li&gt;
+&lt;li&gt;Implement retry logic with backoff for network failures&lt;/li&gt;
+&lt;li&gt;Monitor the &lt;code&gt;X-RateLimit-Remaining&lt;/code&gt; header and slow down requests as you approach the limit&lt;/li&gt;
+&lt;li&gt;Set appropriate request timeouts in your HTTP client (recommended: 10–30 seconds)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="security"&gt;Security&lt;a class="anchor" href="#security"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Never expose your API key in client-side code (browser JavaScript, mobile apps)&lt;/li&gt;
+&lt;li&gt;Use a backend proxy to make API calls from client applications&lt;/li&gt;
+&lt;li&gt;Always verify webhook signatures before processing events&lt;/li&gt;
+&lt;li&gt;Validate and sanitize data received from the API before storing or displaying it&lt;/li&gt;
+&lt;li&gt;Use HTTPS for all API communication — never HTTP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="testing"&gt;Testing&lt;a class="anchor" href="#testing"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Maintain a separate test environment with its own API key and staging data&lt;/li&gt;
+&lt;li&gt;Write tests that cover both success and error cases&lt;/li&gt;
+&lt;li&gt;Mock API calls in unit tests and use the real staging API only for integration tests&lt;/li&gt;
+&lt;li&gt;Clean up test data after each test run to avoid interference between tests&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="versioning"&gt;Versioning&lt;a class="anchor" href="#versioning"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Always specify the API version in your base URL (&lt;code&gt;/v1/&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Monitor the API changelog for deprecation notices&lt;/li&gt;
+&lt;li&gt;Test against new API versions in staging before upgrading in production&lt;/li&gt;
+&lt;li&gt;Subscribe to the developer newsletter for advance notice of breaking changes&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title/><link>/docs/guides/integration/sdks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/guides/integration/sdks/</guid><description>&lt;h1 id="sdks-and-client-libraries"&gt;SDKs and Client Libraries&lt;a class="anchor" href="#sdks-and-client-libraries"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;The BookStore API is accessible from any language that can make HTTP requests. Official and community SDKs are available to simplify integration.&lt;/p&gt;
+&lt;h2 id="official-sdks"&gt;Official SDKs&lt;a class="anchor" href="#official-sdks"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="javascript--typescript"&gt;JavaScript / TypeScript&lt;a class="anchor" href="#javascript--typescript"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm install @bookstore/api-client&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;import&lt;/span&gt; { &lt;span style="color:#a6e22e"&gt;BookStoreClient&lt;/span&gt; } &lt;span style="color:#a6e22e"&gt;from&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;@bookstore/api-client&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;client&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;BookStoreClient&lt;/span&gt;({ &lt;span style="color:#a6e22e"&gt;apiKey&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;process&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;env&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;BOOKSTORE_API_KEY&lt;/span&gt; });
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;books&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;await&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;client&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;books&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;list&lt;/span&gt;({ &lt;span style="color:#a6e22e"&gt;category&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;Fiction&amp;#39;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;inStock&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt; });
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;order&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;await&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;client&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;orders&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;create&lt;/span&gt;({
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;customerId&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;cust-001&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;items&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; [{ &lt;span style="color:#a6e22e"&gt;bookId&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;book-001&amp;#39;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;quantity&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; }],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;shippingAddress&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; { &lt;span style="color:#a6e22e"&gt;street&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;123 Main St&amp;#39;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;city&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;New York&amp;#39;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;country&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;US&amp;#39;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;postalCode&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;10001&amp;#39;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;});&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="python"&gt;Python&lt;a class="anchor" href="#python"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install bookstore-api&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; bookstore &lt;span style="color:#f92672"&gt;import&lt;/span&gt; BookStoreClient
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;client &lt;span style="color:#f92672"&gt;=&lt;/span&gt; BookStoreClient(api_key&lt;span style="color:#f92672"&gt;=&lt;/span&gt;os&lt;span style="color:#f92672"&gt;.&lt;/span&gt;environ[&lt;span style="color:#e6db74"&gt;&amp;#39;BOOKSTORE_API_KEY&amp;#39;&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;books &lt;span style="color:#f92672"&gt;=&lt;/span&gt; client&lt;span style="color:#f92672"&gt;.&lt;/span&gt;books&lt;span style="color:#f92672"&gt;.&lt;/span&gt;list(category&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;Fiction&amp;#39;&lt;/span&gt;, in_stock&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; book &lt;span style="color:#f92672"&gt;in&lt;/span&gt; books:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;book&lt;span style="color:#f92672"&gt;.&lt;/span&gt;title&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; — $&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;book&lt;span style="color:#f92672"&gt;.&lt;/span&gt;price&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="php"&gt;PHP&lt;a class="anchor" href="#php"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;composer require bookstore/api-client&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;use&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;BookStore\Client&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$client &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Client&lt;/span&gt;([&lt;span style="color:#e6db74"&gt;&amp;#39;apiKey&amp;#39;&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getenv&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#39;BOOKSTORE_API_KEY&amp;#39;&lt;/span&gt;)]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$books &lt;span style="color:#f92672"&gt;=&lt;/span&gt; $client&lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;books&lt;/span&gt;()&lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;list&lt;/span&gt;([&lt;span style="color:#e6db74"&gt;&amp;#39;category&amp;#39;&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&amp;gt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;Fiction&amp;#39;&lt;/span&gt;]);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="generating-a-client-from-openapi"&gt;Generating a Client from OpenAPI&lt;a class="anchor" href="#generating-a-client-from-openapi"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Generate a client in any language using the OpenAPI Generator:&lt;/p&gt;</description></item><item><title/><link>/docs/guides/integration/use-cases/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/guides/integration/use-cases/</guid><description>&lt;h1 id="common-use-cases"&gt;Common Use Cases&lt;a class="anchor" href="#common-use-cases"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;This guide provides complete examples for the most common BookStore API integration scenarios.&lt;/p&gt;
+&lt;h2 id="use-case-1--build-a-book-search-page"&gt;Use Case 1 — Build a Book Search Page&lt;a class="anchor" href="#use-case-1--build-a-book-search-page"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Fetch books with filtering and display them to users.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;async&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;function&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;searchBooks&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;query&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;category&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;page&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;params&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;URLSearchParams&lt;/span&gt;({
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;search&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;query&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;page&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;perPage&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;20&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;sort&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;averageRating&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;order&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;desc&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; });
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (&lt;span style="color:#a6e22e"&gt;category&lt;/span&gt;) &lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;set&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#39;category&amp;#39;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;category&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;await&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fetch&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;BASE_URL&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/books?&lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;, {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;headers&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; { &lt;span style="color:#e6db74"&gt;&amp;#39;Authorization&amp;#39;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;`Bearer &lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;API_KEY&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;`&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; });
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;res&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;json&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;results&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;await&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;searchBooks&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#39;gatsby&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;Fiction&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;results&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;data&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;forEach&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;book&lt;/span&gt; =&amp;gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;book&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;title&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; by &lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;book&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;author&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;name&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; — $&lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;book&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;price&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;});&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="use-case-2--place-an-order"&gt;Use Case 2 — Place an Order&lt;a class="anchor" href="#use-case-2--place-an-order"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Complete order placement flow with stock checking and error handling.&lt;/p&gt;</description></item><item><title/><link>/docs/guides/integration/webhooks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/guides/integration/webhooks/</guid><description>&lt;h1 id="webhooks"&gt;Webhooks&lt;a class="anchor" href="#webhooks"&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Webhooks allow you to receive real-time HTTP notifications when events occur in the BookStore system.&lt;/p&gt;
+&lt;h2 id="available-events"&gt;Available Events&lt;a class="anchor" href="#available-events"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Event&lt;/th&gt;
+ &lt;th&gt;Description&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;order.created&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;A new order was placed&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;order.confirmed&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;An order was confirmed&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;order.shipped&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;An order was dispatched&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;order.delivered&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;An order was delivered&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;order.cancelled&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;An order was cancelled&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;book.created&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;A new book was added&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;book.updated&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;A book&amp;rsquo;s details changed&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;inventory.low&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;A book&amp;rsquo;s stock fell below the reorder level&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;review.created&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;A new review was submitted&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="registering-a-webhook"&gt;Registering a Webhook&lt;a class="anchor" href="#registering-a-webhook"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -X POST https://api.bookstore.example.com/v1/webhooks -H &lt;span style="color:#e6db74"&gt;&amp;#34;Authorization: Bearer YOUR_API_KEY&amp;#34;&lt;/span&gt; -H &lt;span style="color:#e6db74"&gt;&amp;#34;Content-Type: application/json&amp;#34;&lt;/span&gt; -d &lt;span style="color:#e6db74"&gt;&amp;#39;{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; &amp;#34;url&amp;#34;: &amp;#34;https://yourapp.example.com/hooks/bookstore&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; &amp;#34;events&amp;#34;: [&amp;#34;order.created&amp;#34;, &amp;#34;order.shipped&amp;#34;],
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; &amp;#34;secret&amp;#34;: &amp;#34;your_webhook_secret&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt; }&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="webhook-payload-format"&gt;Webhook Payload Format&lt;a class="anchor" href="#webhook-payload-format"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;evt-001&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;order.created&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;timestamp&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;2025-10-01T12:00:00Z&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;order&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;ord-042&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;customerId&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;cust-001&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;status&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;pending&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;totalAmount&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;42.96&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="verifying-webhook-signatures"&gt;Verifying Webhook Signatures&lt;a class="anchor" href="#verifying-webhook-signatures"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Each webhook request includes a &lt;code&gt;Bookstore-Signature&lt;/code&gt; header. Always verify it:&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,11 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "BookStore API Documentation"
+theme = "book"
+
+[params]
+  BookSection = "docs"
+  BookSearch = true
+  BookToC = true
+  BookMenuBundle = false
+  BookTheme = "auto"
