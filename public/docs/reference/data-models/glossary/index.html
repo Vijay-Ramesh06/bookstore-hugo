@@ -1,39 +1,1418 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Glossary#This page defines key terms used throughout the BookStore API documentation.
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Glossary#This page defines key terms used throughout the BookStore API documentation.
 A#API Key A secret token used to authenticate requests to the BookStore API. API keys are generated in the developer portal and included in the Authorization header of every request.
 Author A person who wrote one or more books in the BookStore catalog. Authors are stored as separate records and linked to books via the authorId field.
-"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#2e3440"><meta name=color-scheme content="light dark"><meta property="og:url" content="/docs/reference/data-models/glossary/"><meta property="og:site_name" content="BookStore API Documentation"><meta property="og:title" content="BookStore API Documentation"><meta property="og:description" content="Glossary#This page defines key terms used throughout the BookStore API documentation.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="//localhost:1313/docs/reference/data-models/glossary/">
+  <meta property="og:site_name" content="BookStore API Documentation">
+  <meta property="og:title" content="BookStore API Documentation">
+  <meta property="og:description" content="Glossary#This page defines key terms used throughout the BookStore API documentation.
 A#API Key A secret token used to authenticate requests to the BookStore API. API keys are generated in the developer portal and included in the Authorization header of every request.
-Author A person who wrote one or more books in the BookStore catalog. Authors are stored as separate records and linked to books via the authorId field."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta itemprop=name content="BookStore API Documentation"><meta itemprop=description content="Glossary#This page defines key terms used throughout the BookStore API documentation.
+Author A person who wrote one or more books in the BookStore catalog. Authors are stored as separate records and linked to books via the authorId field.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="BookStore API Documentation">
+  <meta itemprop="description" content="Glossary#This page defines key terms used throughout the BookStore API documentation.
 A#API Key A secret token used to authenticate requests to the BookStore API. API keys are generated in the developer portal and included in the Authorization header of every request.
-Author A person who wrote one or more books in the BookStore catalog. Authors are stored as separate records and linked to books via the authorId field."><meta itemprop=wordCount content="638"><title>Glossary | BookStore API Documentation</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=/docs/reference/data-models/glossary/><link rel=stylesheet href=/book.min.b267f830fdf65302ecc1702a1178d4f25aa783409b3a25098f3404dd24f37a4d.css><script defer src=/fuse.min.js></script><script defer src=/en.search.min.b12adfcaaed67f6c08a9af3cc83758a51073ff773e6462fc5328a5f61deb7722.js></script></head><body dir=ltr class="book-kind-page book-type-docs"><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>BookStore API Documentation</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><a>Getting Started</a><ul><li><a>Setup</a><ul><li><a href=/docs/getting-started/setup/environment-setup/>Environment Setup</a></li><li><a href=/docs/getting-started/setup/introduction/>Introduction</a></li><li><a href=/docs/getting-started/setup/testing/>Testing</a></li></ul></li><li><a>Authentication</a><ul><li><a href=/docs/getting-started/authentication/authentication/>Authentication</a></li><li><a href=/docs/getting-started/authentication/rate-limiting/>Rate Limiting</a></li></ul></li><li><a>Basics</a><ul><li><a href=/docs/getting-started/basics/errors/>Errors</a></li><li><a href=/docs/getting-started/basics/quickstart/>Quickstart</a></li></ul></li></ul></li><li><a>Endpoints</a><ul><li><a>Books</a><ul><li><a href=/docs/endpoints/books/create-book/>Create Book</a></li><li><a href=/docs/endpoints/books/delete-book/>Delete Book</a></li><li><a href=/docs/endpoints/books/get-book/>Get Book</a></li><li><a href=/docs/endpoints/books/list-books/>List Books</a></li><li><a href=/docs/endpoints/books/update-book/>Update Book</a></li></ul></li><li><a>Authors</a><ul><li><a href=/docs/endpoints/authors/create-author/>Create Author</a></li><li><a href=/docs/endpoints/authors/delete-author/>Delete Author</a></li><li><a href=/docs/endpoints/authors/get-author/>Get Author</a></li><li><a href=/docs/endpoints/authors/list-authors/>List Authors</a></li><li><a href=/docs/endpoints/authors/update-author/>Update Author</a></li></ul></li><li><a>Orders</a><ul><li><a href=/docs/endpoints/orders/cancel-order/>Cancel Order</a></li><li><a href=/docs/endpoints/orders/create-order/>Create Order</a></li><li><a href=/docs/endpoints/orders/get-order/>Get Order</a></li><li><a href=/docs/endpoints/orders/list-orders/>List Orders</a></li><li><a href=/docs/endpoints/orders/update-order/>Update Order</a></li></ul></li><li><a>Customers</a><ul><li><a href=/docs/endpoints/customers/create-customer/>Create Customer</a></li><li><a href=/docs/endpoints/customers/get-customer/>Get Customer</a></li><li><a href=/docs/endpoints/customers/list-customers/>List Customers</a></li><li><a href=/docs/endpoints/customers/update-customer/>Update Customer</a></li></ul></li><li><a>Categories</a><ul><li><a href=/docs/endpoints/categories/create-category/>Create Category</a></li><li><a href=/docs/endpoints/categories/get-category/>Get Category</a></li><li><a href=/docs/endpoints/categories/list-categories/>List Categories</a></li></ul></li><li><a>Reviews</a><ul><li><a href=/docs/endpoints/reviews/create-review/>Create Review</a></li><li><a href=/docs/endpoints/reviews/delete-review/>Delete Review</a></li><li><a href=/docs/endpoints/reviews/list-reviews/>List Reviews</a></li></ul></li><li><a>Inventory</a><ul><li><a href=/docs/endpoints/inventory/get-inventory/>Get Inventory</a></li><li><a href=/docs/endpoints/inventory/update-inventory/>Update Inventory</a></li></ul></li></ul></li><li><a>Guides</a><ul><li><a>API Usage</a><ul><li><a href=/docs/guides/api-usage/filtering/>Filtering</a></li><li><a href=/docs/guides/api-usage/pagination/>Pagination</a></li><li><a href=/docs/guides/api-usage/sorting/>Sorting</a></li></ul></li><li><a>Integration</a><ul><li><a href=/docs/guides/integration/best-practices/>Best Practices</a></li><li><a href=/docs/guides/integration/sdks/>Sdks</a></li><li><a href=/docs/guides/integration/use-cases/>Use Cases</a></li><li><a href=/docs/guides/integration/webhooks/>Webhooks</a></li></ul></li></ul></li><li><a>Openapi</a><ul><li><a>Specification</a><ul><li><a href=/docs/openapi/specification/overview/>Overview</a></li><li><a href=/docs/openapi/specification/spec/>Spec</a></li><li><a href=/docs/openapi/specification/testing/>Testing</a></li></ul></li></ul></li><li><a>Reference</a><ul><li><a>Data Models</a><ul><li><a href=/docs/reference/data-models/glossary/ class=active>Glossary</a></li><li><a href=/docs/reference/data-models/schemas/>Schemas</a></li><li><a href=/docs/reference/data-models/status-codes/>Status Codes</a></li></ul></li><li><a>Support</a><ul><li><a href=/docs/reference/support/changelog/>Changelog</a></li><li><a href=/docs/reference/support/faq/>Faq</a></li></ul></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>Glossary</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><a href=#a>A</a></li><li><a href=#b>B</a></li><li><a href=#c>C</a></li><li><a href=#e>E</a></li><li><a href=#i>I</a></li><li><a href=#j>J</a></li><li><a href=#o>O</a></li><li><a href=#p>P</a></li><li><a href=#r>R</a></li><li><a href=#s>S</a></li><li><a href=#w>W</a></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=glossary>Glossary<a class=anchor href=#glossary>#</a></h1><p>This page defines key terms used throughout the BookStore API documentation.</p><h2 id=a>A<a class=anchor href=#a>#</a></h2><p><strong>API Key</strong>
-A secret token used to authenticate requests to the BookStore API. API keys are generated in the developer portal and included in the <code>Authorization</code> header of every request.</p><p><strong>Author</strong>
-A person who wrote one or more books in the BookStore catalog. Authors are stored as separate records and linked to books via the <code>authorId</code> field.</p><h2 id=b>B<a class=anchor href=#b>#</a></h2><p><strong>Base URL</strong>
-The root URL for all API requests: <code>https://api.bookstore.example.com/v1</code>. All endpoint paths are appended to this base URL.</p><p><strong>Bearer Token</strong>
-The authentication scheme used by the BookStore API. The API key is passed as a Bearer token in the <code>Authorization</code> header: <code>Authorization: Bearer YOUR_API_KEY</code>.</p><p><strong>Book</strong>
-The primary resource in the BookStore API. Represents a physical or digital title available for sale, with fields for title, author, ISBN, price, category, and stock level.</p><h2 id=c>C<a class=anchor href=#c>#</a></h2><p><strong>Category</strong>
-A classification for books by genre or subject, such as Fiction, Non-Fiction, or Science Fiction. Books belong to exactly one category.</p><p><strong>CRUD</strong>
-Create, Read, Update, Delete — the four basic operations supported by the API for each resource type.</p><p><strong>Cursor</strong>
-A pointer used in some pagination implementations to mark the current position in a result set. The BookStore API uses page-based pagination rather than cursor-based.</p><p><strong>Customer</strong>
-A registered user of the bookstore who can place orders and submit reviews.</p><h2 id=e>E<a class=anchor href=#e>#</a></h2><p><strong>Endpoint</strong>
-A specific URL path in the API that handles a particular action or resource. For example, <code>GET /v1/books</code> is an endpoint for listing books.</p><p><strong>Event</strong>
-An action in the BookStore system that can trigger a webhook notification, such as <code>order.created</code> or <code>inventory.low</code>.</p><h2 id=i>I<a class=anchor href=#i>#</a></h2><p><strong>Idempotency Key</strong>
-A unique identifier attached to a request to ensure it is processed only once, even if retried. Prevents duplicate orders when a request times out and is retried.</p><p><strong>ISBN</strong>
-International Standard Book Number. A 13-digit identifier unique to each book edition. Used as a unique identifier for books in the BookStore system.</p><p><strong>Inventory</strong>
-The stock management record for a book, including current stock level, reserved units, reorder levels, and warehouse location.</p><h2 id=j>J<a class=anchor href=#j>#</a></h2><p><strong>JSON</strong>
-JavaScript Object Notation. The data format used for all BookStore API request bodies and responses.</p><h2 id=o>O<a class=anchor href=#o>#</a></h2><p><strong>OpenAPI</strong>
-An open standard for describing REST APIs. The BookStore API provides an OpenAPI 3.0 specification that can be imported into tools like Postman or used to generate client libraries.</p><p><strong>Order</strong>
-A purchase request from a customer containing one or more books, a shipping address, and payment information. Orders progress through statuses: pending, confirmed, shipped, delivered.</p><h2 id=p>P<a class=anchor href=#p>#</a></h2><p><strong>Pagination</strong>
-The practice of splitting large result sets into pages. The BookStore API uses page-based pagination with <code>page</code> and <code>perPage</code> query parameters.</p><p><strong>Payload</strong>
-The data body of an HTTP request or response, formatted as JSON.</p><p><strong>Permissions</strong>
-The level of access granted by an API key. BookStore API keys can be read-only, read-write, or admin.</p><h2 id=r>R<a class=anchor href=#r>#</a></h2><p><strong>Rate Limiting</strong>
-A restriction on the number of API requests allowed within a time window. Exceeding the limit returns a <code>429 Too Many Requests</code> error.</p><p><strong>REST</strong>
-Representational State Transfer. The architectural style followed by the BookStore API, using standard HTTP methods and consistent resource-based URLs.</p><p><strong>Review</strong>
-A customer rating and comment for a book, with a 1–5 star rating and optional title and body text.</p><h2 id=s>S<a class=anchor href=#s>#</a></h2><p><strong>Schema</strong>
-The defined structure of a data object in the API. For example, the Book schema defines all fields returned when retrieving a book.</p><p><strong>Slug</strong>
-A URL-friendly version of a name, using lowercase letters and hyphens instead of spaces. For example, the slug for the category &ldquo;Science Fiction&rdquo; is <code>science-fiction</code>.</p><p><strong>Stock</strong>
-The number of physical units of a book currently held in the warehouse and available for sale.</p><h2 id=w>W<a class=anchor href=#w>#</a></h2><p><strong>Webhook</strong>
-A mechanism for the BookStore API to send HTTP notifications to your server when specific events occur, such as when an order is placed or a shipment is dispatched.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class="flex flex-wrap justify-between"><span><a href=/docs/openapi/specification/testing/ class="flex align-center"><img src=/icons/backward.svg class=book-icon alt=Backward>
-<span>Testing</span>
-</a></span><span><a href=/docs/reference/data-models/schemas/ class="flex align-center"><span>Schemas</span>
-<img src=/icons/forward.svg class=book-icon alt=Forward></a></span></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#a>A</a></li><li><a href=#b>B</a></li><li><a href=#c>C</a></li><li><a href=#e>E</a></li><li><a href=#i>I</a></li><li><a href=#j>J</a></li><li><a href=#o>O</a></li><li><a href=#p>P</a></li><li><a href=#r>R</a></li><li><a href=#s>S</a></li><li><a href=#w>W</a></li></ul></nav></div></aside></main></body></html>
+Author A person who wrote one or more books in the BookStore catalog. Authors are stored as separate records and linked to books via the authorId field.">
+  <meta itemprop="wordCount" content="638">
+
+<title>Glossary | BookStore API Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="//localhost:1313/docs/reference/data-models/glossary/">
+<link rel="stylesheet" href="/book.min.b267f830fdf65302ecc1702a1178d4f25aa783409b3a25098f3404dd24f37a4d.css" integrity="sha256-smf4MP32UwLswXAqEXjU8lqng0CbOiUJjzQE3STzek0=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.adaa99bb98a16c76afa3fec17efe5c71d988bb87f04e7cb2edc0fe20f6836e00.js" integrity="sha256-raqZu5ihbHavo/7Bfv5ccdmIu4fwTnyy7cD&#43;IPaDbgA=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>BookStore API Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Getting Started</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Setup</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/setup/environment-setup/" class="">
+      Environment Setup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/setup/introduction/" class="">
+      Introduction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/setup/testing/" class="">
+      Testing</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Authentication</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/authentication/authentication/" class="">
+      Authentication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/authentication/rate-limiting/" class="">
+      Rate Limiting</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Basics</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/basics/errors/" class="">
+      Errors</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/basics/quickstart/" class="">
+      Quickstart</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Endpoints</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Books</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/create-book/" class="">
+      Create Book</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/delete-book/" class="">
+      Delete Book</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/get-book/" class="">
+      Get Book</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/list-books/" class="">
+      List Books</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/update-book/" class="">
+      Update Book</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Authors</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/create-author/" class="">
+      Create Author</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/delete-author/" class="">
+      Delete Author</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/get-author/" class="">
+      Get Author</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/list-authors/" class="">
+      List Authors</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/update-author/" class="">
+      Update Author</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Orders</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/cancel-order/" class="">
+      Cancel Order</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/create-order/" class="">
+      Create Order</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/get-order/" class="">
+      Get Order</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/list-orders/" class="">
+      List Orders</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/update-order/" class="">
+      Update Order</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Customers</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/customers/create-customer/" class="">
+      Create Customer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/customers/get-customer/" class="">
+      Get Customer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/customers/list-customers/" class="">
+      List Customers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/customers/update-customer/" class="">
+      Update Customer</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Categories</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/categories/create-category/" class="">
+      Create Category</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/categories/get-category/" class="">
+      Get Category</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/categories/list-categories/" class="">
+      List Categories</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Reviews</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/reviews/create-review/" class="">
+      Create Review</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/reviews/delete-review/" class="">
+      Delete Review</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/reviews/list-reviews/" class="">
+      List Reviews</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Inventory</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/inventory/get-inventory/" class="">
+      Get Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/inventory/update-inventory/" class="">
+      Update Inventory</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Guides</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      API Usage</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/api-usage/filtering/" class="">
+      Filtering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/api-usage/pagination/" class="">
+      Pagination</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/api-usage/sorting/" class="">
+      Sorting</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Integration</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/integration/best-practices/" class="">
+      Best Practices</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/integration/sdks/" class="">
+      Sdks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/integration/use-cases/" class="">
+      Use Cases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/integration/webhooks/" class="">
+      Webhooks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Openapi</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Specification</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/openapi/specification/overview/" class="">
+      Overview</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/openapi/specification/spec/" class="">
+      Spec</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/openapi/specification/testing/" class="">
+      Testing</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Reference</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Data Models</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/data-models/glossary/" class="active">
+      Glossary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/data-models/schemas/" class="">
+      Schemas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/data-models/status-codes/" class="">
+      Status Codes</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Support</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/support/changelog/" class="">
+      Changelog</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/support/faq/" class="">
+      Faq</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/docs-v1/">📄 v1.0 (archived)</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Glossary</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#a">A</a></li>
+    <li><a href="#b">B</a></li>
+    <li><a href="#c">C</a></li>
+    <li><a href="#e">E</a></li>
+    <li><a href="#i">I</a></li>
+    <li><a href="#j">J</a></li>
+    <li><a href="#o">O</a></li>
+    <li><a href="#p">P</a></li>
+    <li><a href="#r">R</a></li>
+    <li><a href="#s">S</a></li>
+    <li><a href="#w">W</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="glossary">Glossary<a class="anchor" href="#glossary">#</a></h1>
+<p>This page defines key terms used throughout the BookStore API documentation.</p>
+<h2 id="a">A<a class="anchor" href="#a">#</a></h2>
+<p><strong>API Key</strong>
+A secret token used to authenticate requests to the BookStore API. API keys are generated in the developer portal and included in the <code>Authorization</code> header of every request.</p>
+<p><strong>Author</strong>
+A person who wrote one or more books in the BookStore catalog. Authors are stored as separate records and linked to books via the <code>authorId</code> field.</p>
+<h2 id="b">B<a class="anchor" href="#b">#</a></h2>
+<p><strong>Base URL</strong>
+The root URL for all API requests: <code>https://api.bookstore.example.com/v1</code>. All endpoint paths are appended to this base URL.</p>
+<p><strong>Bearer Token</strong>
+The authentication scheme used by the BookStore API. The API key is passed as a Bearer token in the <code>Authorization</code> header: <code>Authorization: Bearer YOUR_API_KEY</code>.</p>
+<p><strong>Book</strong>
+The primary resource in the BookStore API. Represents a physical or digital title available for sale, with fields for title, author, ISBN, price, category, and stock level.</p>
+<h2 id="c">C<a class="anchor" href="#c">#</a></h2>
+<p><strong>Category</strong>
+A classification for books by genre or subject, such as Fiction, Non-Fiction, or Science Fiction. Books belong to exactly one category.</p>
+<p><strong>CRUD</strong>
+Create, Read, Update, Delete — the four basic operations supported by the API for each resource type.</p>
+<p><strong>Cursor</strong>
+A pointer used in some pagination implementations to mark the current position in a result set. The BookStore API uses page-based pagination rather than cursor-based.</p>
+<p><strong>Customer</strong>
+A registered user of the bookstore who can place orders and submit reviews.</p>
+<h2 id="e">E<a class="anchor" href="#e">#</a></h2>
+<p><strong>Endpoint</strong>
+A specific URL path in the API that handles a particular action or resource. For example, <code>GET /v1/books</code> is an endpoint for listing books.</p>
+<p><strong>Event</strong>
+An action in the BookStore system that can trigger a webhook notification, such as <code>order.created</code> or <code>inventory.low</code>.</p>
+<h2 id="i">I<a class="anchor" href="#i">#</a></h2>
+<p><strong>Idempotency Key</strong>
+A unique identifier attached to a request to ensure it is processed only once, even if retried. Prevents duplicate orders when a request times out and is retried.</p>
+<p><strong>ISBN</strong>
+International Standard Book Number. A 13-digit identifier unique to each book edition. Used as a unique identifier for books in the BookStore system.</p>
+<p><strong>Inventory</strong>
+The stock management record for a book, including current stock level, reserved units, reorder levels, and warehouse location.</p>
+<h2 id="j">J<a class="anchor" href="#j">#</a></h2>
+<p><strong>JSON</strong>
+JavaScript Object Notation. The data format used for all BookStore API request bodies and responses.</p>
+<h2 id="o">O<a class="anchor" href="#o">#</a></h2>
+<p><strong>OpenAPI</strong>
+An open standard for describing REST APIs. The BookStore API provides an OpenAPI 3.0 specification that can be imported into tools like Postman or used to generate client libraries.</p>
+<p><strong>Order</strong>
+A purchase request from a customer containing one or more books, a shipping address, and payment information. Orders progress through statuses: pending, confirmed, shipped, delivered.</p>
+<h2 id="p">P<a class="anchor" href="#p">#</a></h2>
+<p><strong>Pagination</strong>
+The practice of splitting large result sets into pages. The BookStore API uses page-based pagination with <code>page</code> and <code>perPage</code> query parameters.</p>
+<p><strong>Payload</strong>
+The data body of an HTTP request or response, formatted as JSON.</p>
+<p><strong>Permissions</strong>
+The level of access granted by an API key. BookStore API keys can be read-only, read-write, or admin.</p>
+<h2 id="r">R<a class="anchor" href="#r">#</a></h2>
+<p><strong>Rate Limiting</strong>
+A restriction on the number of API requests allowed within a time window. Exceeding the limit returns a <code>429 Too Many Requests</code> error.</p>
+<p><strong>REST</strong>
+Representational State Transfer. The architectural style followed by the BookStore API, using standard HTTP methods and consistent resource-based URLs.</p>
+<p><strong>Review</strong>
+A customer rating and comment for a book, with a 1–5 star rating and optional title and body text.</p>
+<h2 id="s">S<a class="anchor" href="#s">#</a></h2>
+<p><strong>Schema</strong>
+The defined structure of a data object in the API. For example, the Book schema defines all fields returned when retrieving a book.</p>
+<p><strong>Slug</strong>
+A URL-friendly version of a name, using lowercase letters and hyphens instead of spaces. For example, the slug for the category &ldquo;Science Fiction&rdquo; is <code>science-fiction</code>.</p>
+<p><strong>Stock</strong>
+The number of physical units of a book currently held in the warehouse and available for sale.</p>
+<h2 id="w">W<a class="anchor" href="#w">#</a></h2>
+<p><strong>Webhook</strong>
+A mechanism for the BookStore API to send HTTP notifications to your server when specific events occur, such as when an order is placed or a shipment is dispatched.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/openapi/specification/testing/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Testing</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/reference/data-models/schemas/" class="flex align-center">
+        <span>Schemas</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#a">A</a></li>
+    <li><a href="#b">B</a></li>
+    <li><a href="#c">C</a></li>
+    <li><a href="#e">E</a></li>
+    <li><a href="#i">I</a></li>
+    <li><a href="#j">J</a></li>
+    <li><a href="#o">O</a></li>
+    <li><a href="#p">P</a></li>
+    <li><a href="#r">R</a></li>
+    <li><a href="#s">S</a></li>
+    <li><a href="#w">W</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

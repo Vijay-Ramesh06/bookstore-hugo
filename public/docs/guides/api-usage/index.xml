@@ -1,265 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BookStore API Documentation</title><link>/docs/guides/api-usage/</link><description>Recent content on BookStore API Documentation</description><generator>Hugo</generator><language>en-us</language><atom:link href="/docs/guides/api-usage/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>/docs/guides/api-usage/filtering/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/guides/api-usage/filtering/</guid><description>&lt;h1 id="filtering"&gt;Filtering&lt;a class="anchor" href="#filtering"&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;Most BookStore API list endpoints support query parameter filtering to retrieve exactly the data you need.&lt;/p&gt;
-&lt;h2 id="common-filter-parameters"&gt;Common Filter Parameters&lt;a class="anchor" href="#common-filter-parameters"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;h3 id="text-search"&gt;Text Search&lt;a class="anchor" href="#text-search"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Use the &lt;code&gt;search&lt;/code&gt; parameter for full-text search across key fields:&lt;/p&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;GET /v1/books?search=fitzgerald&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For books, this searches title, author name, description, and ISBN.&lt;/p&gt;
-&lt;h3 id="date-range-filters"&gt;Date Range Filters&lt;a class="anchor" href="#date-range-filters"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Use ISO 8601 date format for date filters:&lt;/p&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;GET /v1/orders?fromDate=2025-01-01&amp;amp;toDate=2025-03-31&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="boolean-filters"&gt;Boolean Filters&lt;a class="anchor" href="#boolean-filters"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;GET /v1/books?inStock=true&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="enum-filters"&gt;Enum Filters&lt;a class="anchor" href="#enum-filters"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;GET /v1/orders?status=pending
-GET /v1/orders?status=confirmed&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="combining-filters"&gt;Combining Filters&lt;a class="anchor" href="#combining-filters"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;All filters use AND logic — all conditions must match:&lt;/p&gt;</description></item><item><title/><link>/docs/guides/api-usage/pagination/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/guides/api-usage/pagination/</guid><description>&lt;h1 id="pagination"&gt;Pagination&lt;a class="anchor" href="#pagination"&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;All BookStore API list endpoints return paginated results. This guide explains how pagination works and how to iterate through large result sets.&lt;/p&gt;
-&lt;h2 id="pagination-parameters"&gt;Pagination Parameters&lt;a class="anchor" href="#pagination-parameters"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Parameter&lt;/th&gt;
- &lt;th&gt;Type&lt;/th&gt;
- &lt;th&gt;Default&lt;/th&gt;
- &lt;th&gt;Max&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;page&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;1&lt;/td&gt;
- &lt;td&gt;—&lt;/td&gt;
- &lt;td&gt;Page number to retrieve&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;perPage&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;20&lt;/td&gt;
- &lt;td&gt;100&lt;/td&gt;
- &lt;td&gt;Number of results per page&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id="pagination-response-object"&gt;Pagination Response Object&lt;a class="anchor" href="#pagination-response-object"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Every list endpoint includes a &lt;code&gt;pagination&lt;/code&gt; object in the response:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;pagination&amp;#34;&lt;/span&gt;: {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;total&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1250&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;page&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;perPage&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;20&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;totalPages&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;63&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Field&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;total&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Total number of matching records&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;page&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Current page number&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;perPage&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Number of records per page&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;totalPages&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Total number of pages&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id="fetching-all-pages-in-javascript"&gt;Fetching All Pages in JavaScript&lt;a class="anchor" href="#fetching-all-pages-in-javascript"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;async&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;function&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;getAllBooks&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;books&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [];
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;page&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;totalPages&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; (&lt;span style="color:#a6e22e"&gt;page&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;totalPages&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;response&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;await&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fetch&lt;/span&gt;(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;`https://api.bookstore.example.com/v1/books?page=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;page&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;amp;perPage=100`&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; { &lt;span style="color:#a6e22e"&gt;headers&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; { &lt;span style="color:#e6db74"&gt;&amp;#39;Authorization&amp;#39;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;`Bearer &lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;API_KEY&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;`&lt;/span&gt; } }
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; );
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;json&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;await&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;response&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;json&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;books&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;push&lt;/span&gt;(...&lt;span style="color:#a6e22e"&gt;json&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;data&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;totalPages&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;json&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;pagination&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;totalPages&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;page&lt;/span&gt;&lt;span style="color:#f92672"&gt;++&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;books&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="fetching-all-pages-in-python"&gt;Fetching All Pages in Python&lt;a class="anchor" href="#fetching-all-pages-in-python"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;get_all_books&lt;/span&gt;():
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; books &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; page &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; total_pages &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; page &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; total_pages:
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; requests&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;BASE_URL&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;/books&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; params&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{&lt;span style="color:#e6db74"&gt;&amp;#39;page&amp;#39;&lt;/span&gt;: page, &lt;span style="color:#e6db74"&gt;&amp;#39;perPage&amp;#39;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;},
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; headers&lt;span style="color:#f92672"&gt;=&lt;/span&gt;headers
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; )
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; data &lt;span style="color:#f92672"&gt;=&lt;/span&gt; response&lt;span style="color:#f92672"&gt;.&lt;/span&gt;json()
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; books&lt;span style="color:#f92672"&gt;.&lt;/span&gt;extend(data[&lt;span style="color:#e6db74"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;])
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; total_pages &lt;span style="color:#f92672"&gt;=&lt;/span&gt; data[&lt;span style="color:#e6db74"&gt;&amp;#39;pagination&amp;#39;&lt;/span&gt;][&lt;span style="color:#e6db74"&gt;&amp;#39;totalPages&amp;#39;&lt;/span&gt;]
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; page &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; books&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="best-practices"&gt;Best Practices&lt;a class="anchor" href="#best-practices"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Use &lt;code&gt;perPage=100&lt;/code&gt; to minimize the number of API calls when fetching large datasets&lt;/li&gt;
-&lt;li&gt;Cache the &lt;code&gt;total&lt;/code&gt; and &lt;code&gt;totalPages&lt;/code&gt; values from the first response to avoid unnecessary requests&lt;/li&gt;
-&lt;li&gt;For very large datasets, consider using date-range filters to split the data into smaller chunks&lt;/li&gt;
-&lt;li&gt;Respect rate limits by adding a small delay between requests when iterating many pages&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Last reviewed: October 2025.&lt;/p&gt;</description></item><item><title/><link>/docs/guides/api-usage/sorting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/guides/api-usage/sorting/</guid><description>&lt;h1 id="sorting"&gt;Sorting&lt;a class="anchor" href="#sorting"&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;BookStore API list endpoints support sorting results by various fields using the &lt;code&gt;sort&lt;/code&gt; and &lt;code&gt;order&lt;/code&gt; query parameters.&lt;/p&gt;
-&lt;h2 id="sort-parameters"&gt;Sort Parameters&lt;a class="anchor" href="#sort-parameters"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Parameter&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;th&gt;Values&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;sort&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Field to sort by&lt;/td&gt;
- &lt;td&gt;Varies by endpoint&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;order&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Sort direction&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;asc&lt;/code&gt; or &lt;code&gt;desc&lt;/code&gt;&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id="default-sort-behavior"&gt;Default Sort Behavior&lt;a class="anchor" href="#default-sort-behavior"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;If &lt;code&gt;sort&lt;/code&gt; is not specified, results are returned in the default order for each resource:&lt;/p&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Resource&lt;/th&gt;
- &lt;th&gt;Default Sort&lt;/th&gt;
- &lt;th&gt;Default Order&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;Books&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;desc&lt;/code&gt; (newest first)&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;Authors&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;asc&lt;/code&gt; (alphabetical)&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;Orders&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;desc&lt;/code&gt; (newest first)&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;Customers&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;desc&lt;/code&gt;&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;Reviews&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;desc&lt;/code&gt;&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id="sortable-fields-by-endpoint"&gt;Sortable Fields by Endpoint&lt;a class="anchor" href="#sortable-fields-by-endpoint"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;h3 id="books"&gt;Books&lt;a class="anchor" href="#books"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Field&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Alphabetical by title&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;price&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By retail price&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;publishedYear&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By year of publication&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;averageRating&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By customer rating&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;stock&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By stock level&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By date added to catalog&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;GET /v1/books?sort=price&amp;amp;order=asc&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="orders"&gt;Orders&lt;a class="anchor" href="#orders"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Field&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By order date&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;totalAmount&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By order value&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By order status&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;GET /v1/orders?sort=totalAmount&amp;amp;order=desc&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="authors"&gt;Authors&lt;a class="anchor" href="#authors"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Field&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Alphabetical&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;bookCount&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By number of books&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;By date added&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id="sorting-with-filtering"&gt;Sorting with Filtering&lt;a class="anchor" href="#sorting-with-filtering"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Sort and filter parameters work together:&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BookStore API Documentation</title>
+    <link>//localhost:1313/docs/guides/api-usage/</link>
+    <description>Recent content on BookStore API Documentation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="//localhost:1313/docs/guides/api-usage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>//localhost:1313/docs/guides/api-usage/filtering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/guides/api-usage/filtering/</guid>
+      <description>&lt;h1 id=&#34;filtering&#34;&gt;Filtering&lt;a class=&#34;anchor&#34; href=&#34;#filtering&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Most BookStore API list endpoints support query parameter filtering to retrieve exactly the data you need.&lt;/p&gt;&#xA;&lt;h2 id=&#34;common-filter-parameters&#34;&gt;Common Filter Parameters&lt;a class=&#34;anchor&#34; href=&#34;#common-filter-parameters&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;h3 id=&#34;text-search&#34;&gt;Text Search&lt;a class=&#34;anchor&#34; href=&#34;#text-search&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;Use the &lt;code&gt;search&lt;/code&gt; parameter for full-text search across key fields:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /v1/books?search=fitzgerald&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For books, this searches title, author name, description, and ISBN.&lt;/p&gt;&#xA;&lt;h3 id=&#34;date-range-filters&#34;&gt;Date Range Filters&lt;a class=&#34;anchor&#34; href=&#34;#date-range-filters&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;Use ISO 8601 date format for date filters:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /v1/orders?fromDate=2025-01-01&amp;amp;toDate=2025-03-31&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;boolean-filters&#34;&gt;Boolean Filters&lt;a class=&#34;anchor&#34; href=&#34;#boolean-filters&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /v1/books?inStock=true&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;enum-filters&#34;&gt;Enum Filters&lt;a class=&#34;anchor&#34; href=&#34;#enum-filters&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /v1/orders?status=pending&#xA;GET /v1/orders?status=confirmed&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;combining-filters&#34;&gt;Combining Filters&lt;a class=&#34;anchor&#34; href=&#34;#combining-filters&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;All filters use AND logic — all conditions must match:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/docs/guides/api-usage/pagination/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/guides/api-usage/pagination/</guid>
+      <description>&lt;h1 id=&#34;pagination&#34;&gt;Pagination&lt;a class=&#34;anchor&#34; href=&#34;#pagination&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;All BookStore API list endpoints return paginated results. This guide explains how pagination works and how to iterate through large result sets.&lt;/p&gt;&#xA;&lt;h2 id=&#34;pagination-parameters&#34;&gt;Pagination Parameters&lt;a class=&#34;anchor&#34; href=&#34;#pagination-parameters&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Parameter&lt;/th&gt;&#xA;          &lt;th&gt;Type&lt;/th&gt;&#xA;          &lt;th&gt;Default&lt;/th&gt;&#xA;          &lt;th&gt;Max&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;page&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;1&lt;/td&gt;&#xA;          &lt;td&gt;—&lt;/td&gt;&#xA;          &lt;td&gt;Page number to retrieve&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;perPage&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;20&lt;/td&gt;&#xA;          &lt;td&gt;100&lt;/td&gt;&#xA;          &lt;td&gt;Number of results per page&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;pagination-response-object&#34;&gt;Pagination Response Object&lt;a class=&#34;anchor&#34; href=&#34;#pagination-response-object&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Every list endpoint includes a &lt;code&gt;pagination&lt;/code&gt; object in the response:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pagination&amp;#34;&lt;/span&gt;: {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;total&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;1250&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;page&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;perPage&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;totalPages&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;63&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Field&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;total&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Total number of matching records&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;page&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Current page number&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;perPage&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Number of records per page&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;totalPages&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Total number of pages&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;fetching-all-pages-in-javascript&#34;&gt;Fetching All Pages in JavaScript&lt;a class=&#34;anchor&#34; href=&#34;#fetching-all-pages-in-javascript&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;async&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getAllBooks&lt;/span&gt;() {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;books&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [];&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;page&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;totalPages&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;page&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;totalPages&lt;/span&gt;) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fetch&lt;/span&gt;(&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#e6db74&#34;&gt;`https://api.bookstore.example.com/v1/books?page=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;page&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;amp;perPage=100`&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      { &lt;span style=&#34;color:#a6e22e&#34;&gt;headers&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; { &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Authorization&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`Bearer &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;API_KEY&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt; } }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    );&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;json&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;json&lt;/span&gt;();&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;books&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;(...&lt;span style=&#34;color:#a6e22e&#34;&gt;json&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;totalPages&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;json&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;pagination&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;totalPages&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;page&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;books&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;fetching-all-pages-in-python&#34;&gt;Fetching All Pages in Python&lt;a class=&#34;anchor&#34; href=&#34;#fetching-all-pages-in-python&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_all_books&lt;/span&gt;():&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    books &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    total_pages &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; page &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; total_pages:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; requests&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;BASE_URL&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/books&amp;#39;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            params&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;page&amp;#39;&lt;/span&gt;: page, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;perPage&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;},&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            headers&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;headers&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        data &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; response&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;json()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        books&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;extend(data[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;data&amp;#39;&lt;/span&gt;])&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        total_pages &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; data[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pagination&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;totalPages&amp;#39;&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        page &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; books&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;best-practices&#34;&gt;Best Practices&lt;a class=&#34;anchor&#34; href=&#34;#best-practices&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Use &lt;code&gt;perPage=100&lt;/code&gt; to minimize the number of API calls when fetching large datasets&lt;/li&gt;&#xA;&lt;li&gt;Cache the &lt;code&gt;total&lt;/code&gt; and &lt;code&gt;totalPages&lt;/code&gt; values from the first response to avoid unnecessary requests&lt;/li&gt;&#xA;&lt;li&gt;For very large datasets, consider using date-range filters to split the data into smaller chunks&lt;/li&gt;&#xA;&lt;li&gt;Respect rate limits by adding a small delay between requests when iterating many pages&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Last reviewed: October 2025.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/docs/guides/api-usage/sorting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/guides/api-usage/sorting/</guid>
+      <description>&lt;h1 id=&#34;sorting&#34;&gt;Sorting&lt;a class=&#34;anchor&#34; href=&#34;#sorting&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;BookStore API list endpoints support sorting results by various fields using the &lt;code&gt;sort&lt;/code&gt; and &lt;code&gt;order&lt;/code&gt; query parameters.&lt;/p&gt;&#xA;&lt;h2 id=&#34;sort-parameters&#34;&gt;Sort Parameters&lt;a class=&#34;anchor&#34; href=&#34;#sort-parameters&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Parameter&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;          &lt;th&gt;Values&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;sort&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Field to sort by&lt;/td&gt;&#xA;          &lt;td&gt;Varies by endpoint&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;order&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Sort direction&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;asc&lt;/code&gt; or &lt;code&gt;desc&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;default-sort-behavior&#34;&gt;Default Sort Behavior&lt;a class=&#34;anchor&#34; href=&#34;#default-sort-behavior&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;If &lt;code&gt;sort&lt;/code&gt; is not specified, results are returned in the default order for each resource:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Resource&lt;/th&gt;&#xA;          &lt;th&gt;Default Sort&lt;/th&gt;&#xA;          &lt;th&gt;Default Order&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Books&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;desc&lt;/code&gt; (newest first)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Authors&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;asc&lt;/code&gt; (alphabetical)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Orders&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;desc&lt;/code&gt; (newest first)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Customers&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;desc&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Reviews&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;desc&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;sortable-fields-by-endpoint&#34;&gt;Sortable Fields by Endpoint&lt;a class=&#34;anchor&#34; href=&#34;#sortable-fields-by-endpoint&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;h3 id=&#34;books&#34;&gt;Books&lt;a class=&#34;anchor&#34; href=&#34;#books&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Field&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Alphabetical by title&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;price&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By retail price&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;publishedYear&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By year of publication&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;averageRating&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By customer rating&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;stock&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By stock level&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By date added to catalog&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /v1/books?sort=price&amp;amp;order=asc&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;orders&#34;&gt;Orders&lt;a class=&#34;anchor&#34; href=&#34;#orders&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Field&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By order date&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;totalAmount&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By order value&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By order status&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /v1/orders?sort=totalAmount&amp;amp;order=desc&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;authors&#34;&gt;Authors&lt;a class=&#34;anchor&#34; href=&#34;#authors&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Field&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Alphabetical&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;bookCount&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By number of books&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;createdAt&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;By date added&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;sorting-with-filtering&#34;&gt;Sorting with Filtering&lt;a class=&#34;anchor&#34; href=&#34;#sorting-with-filtering&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Sort and filter parameters work together:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

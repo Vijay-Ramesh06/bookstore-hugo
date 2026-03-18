@@ -1,164 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BookStore API Documentation</title><link>/docs/endpoints/inventory/</link><description>Recent content on BookStore API Documentation</description><generator>Hugo</generator><language>en-us</language><atom:link href="/docs/endpoints/inventory/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>/docs/endpoints/inventory/get-inventory/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/endpoints/inventory/get-inventory/</guid><description>&lt;h1 id="get-inventory"&gt;Get Inventory&lt;a class="anchor" href="#get-inventory"&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;Retrieve the current stock level and inventory details for a book.&lt;/p&gt;
-&lt;h2 id="endpoint"&gt;Endpoint&lt;a class="anchor" href="#endpoint"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;GET /v1/inventory/{bookId}&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="path-parameters"&gt;Path Parameters&lt;a class="anchor" href="#path-parameters"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Parameter&lt;/th&gt;
- &lt;th&gt;Type&lt;/th&gt;
- &lt;th&gt;Required&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;bookId&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;string&lt;/td&gt;
- &lt;td&gt;Yes&lt;/td&gt;
- &lt;td&gt;Book identifier&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id="request"&gt;Request&lt;a class="anchor" href="#request"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl https://api.bookstore.example.com/v1/inventory/book-001 -H &lt;span style="color:#e6db74"&gt;&amp;#34;Authorization: Bearer YOUR_API_KEY&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="response"&gt;Response&lt;a class="anchor" href="#response"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;success&amp;#34;&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;bookId&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;book-001&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;title&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;The Great Gatsby&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;sku&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;TGG-001&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;stock&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;42&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;reserved&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;5&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;available&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;37&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;reorderLevel&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;10&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;reorderQuantity&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;50&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;warehouseLocation&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;Section A, Shelf 3&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;lastRestocked&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;2025-09-15T00:00:00Z&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;lastUpdated&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;2025-10-01T09:00:00Z&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="response-fields"&gt;Response Fields&lt;a class="anchor" href="#response-fields"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Field&lt;/th&gt;
- &lt;th&gt;Type&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;stock&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;Total physical units in warehouse&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;reserved&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;Units reserved for pending orders&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;available&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;Units available for new orders (stock minus reserved)&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;reorderLevel&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;Stock level that triggers a reorder alert&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;reorderQuantity&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;Quantity to order when reorder is triggered&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;warehouseLocation&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;string&lt;/td&gt;
- &lt;td&gt;Physical location in the warehouse&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;lastRestocked&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;string&lt;/td&gt;
- &lt;td&gt;Date of the last stock replenishment&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id="error-responses"&gt;Error Responses&lt;a class="anchor" href="#error-responses"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Status&lt;/th&gt;
- &lt;th&gt;Code&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;404&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;&lt;code&gt;RESOURCE_NOT_FOUND&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;Book not found&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;</description></item><item><title/><link>/docs/endpoints/inventory/update-inventory/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/endpoints/inventory/update-inventory/</guid><description>&lt;h1 id="update-inventory"&gt;Update Inventory&lt;a class="anchor" href="#update-inventory"&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;Update the stock level and inventory settings for a book.&lt;/p&gt;
-&lt;h2 id="endpoint"&gt;Endpoint&lt;a class="anchor" href="#endpoint"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;PATCH /v1/inventory/{bookId}&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="required-permissions"&gt;Required Permissions&lt;a class="anchor" href="#required-permissions"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;admin&lt;/code&gt; API key.&lt;/p&gt;
-&lt;h2 id="request-body"&gt;Request Body&lt;a class="anchor" href="#request-body"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;stock&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;reorderLevel&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;15&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;reorderQuantity&amp;#34;&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;75&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;warehouseLocation&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;Section B, Shelf 1&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;notes&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;Restocked from supplier order #PO-2025-089&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="request-fields"&gt;Request Fields&lt;a class="anchor" href="#request-fields"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;Field&lt;/th&gt;
- &lt;th&gt;Type&lt;/th&gt;
- &lt;th&gt;Required&lt;/th&gt;
- &lt;th&gt;Description&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;stock&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;No&lt;/td&gt;
- &lt;td&gt;Set absolute stock level&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;adjustment&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;No&lt;/td&gt;
- &lt;td&gt;Add or subtract from current stock (positive or negative)&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;reorderLevel&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;No&lt;/td&gt;
- &lt;td&gt;Minimum stock before reorder alert&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;reorderQuantity&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;integer&lt;/td&gt;
- &lt;td&gt;No&lt;/td&gt;
- &lt;td&gt;Quantity to reorder&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;warehouseLocation&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;string&lt;/td&gt;
- &lt;td&gt;No&lt;/td&gt;
- &lt;td&gt;Physical warehouse location&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
- &lt;td&gt;string&lt;/td&gt;
- &lt;td&gt;No&lt;/td&gt;
- &lt;td&gt;Reason for stock change (for audit log)&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Use either &lt;code&gt;stock&lt;/code&gt; (absolute) or &lt;code&gt;adjustment&lt;/code&gt; (relative), not both.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BookStore API Documentation</title>
+    <link>//localhost:1313/docs/endpoints/inventory/</link>
+    <description>Recent content on BookStore API Documentation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="//localhost:1313/docs/endpoints/inventory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>//localhost:1313/docs/endpoints/inventory/get-inventory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/endpoints/inventory/get-inventory/</guid>
+      <description>&lt;h1 id=&#34;get-inventory&#34;&gt;Get Inventory&lt;a class=&#34;anchor&#34; href=&#34;#get-inventory&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Retrieve the current stock level and inventory details for a book.&lt;/p&gt;&#xA;&lt;h2 id=&#34;endpoint&#34;&gt;Endpoint&lt;a class=&#34;anchor&#34; href=&#34;#endpoint&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GET /v1/inventory/{bookId}&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;path-parameters&#34;&gt;Path Parameters&lt;a class=&#34;anchor&#34; href=&#34;#path-parameters&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Parameter&lt;/th&gt;&#xA;          &lt;th&gt;Type&lt;/th&gt;&#xA;          &lt;th&gt;Required&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;bookId&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;string&lt;/td&gt;&#xA;          &lt;td&gt;Yes&lt;/td&gt;&#xA;          &lt;td&gt;Book identifier&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;request&#34;&gt;Request&lt;a class=&#34;anchor&#34; href=&#34;#request&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl https://api.bookstore.example.com/v1/inventory/book-001   -H &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization: Bearer YOUR_API_KEY&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;response&#34;&gt;Response&lt;a class=&#34;anchor&#34; href=&#34;#response&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;success&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;bookId&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;book-001&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;The Great Gatsby&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sku&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TGG-001&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;stock&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;42&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;reserved&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;available&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;37&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;reorderLevel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;reorderQuantity&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;warehouseLocation&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Section A, Shelf 3&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;lastRestocked&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2025-09-15T00:00:00Z&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;lastUpdated&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2025-10-01T09:00:00Z&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;response-fields&#34;&gt;Response Fields&lt;a class=&#34;anchor&#34; href=&#34;#response-fields&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Field&lt;/th&gt;&#xA;          &lt;th&gt;Type&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;stock&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;Total physical units in warehouse&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;reserved&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;Units reserved for pending orders&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;available&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;Units available for new orders (stock minus reserved)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;reorderLevel&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;Stock level that triggers a reorder alert&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;reorderQuantity&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;Quantity to order when reorder is triggered&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;warehouseLocation&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;string&lt;/td&gt;&#xA;          &lt;td&gt;Physical location in the warehouse&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;lastRestocked&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;string&lt;/td&gt;&#xA;          &lt;td&gt;Date of the last stock replenishment&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;error-responses&#34;&gt;Error Responses&lt;a class=&#34;anchor&#34; href=&#34;#error-responses&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Status&lt;/th&gt;&#xA;          &lt;th&gt;Code&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;404&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;RESOURCE_NOT_FOUND&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Book not found&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/docs/endpoints/inventory/update-inventory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/endpoints/inventory/update-inventory/</guid>
+      <description>&lt;h1 id=&#34;update-inventory&#34;&gt;Update Inventory&lt;a class=&#34;anchor&#34; href=&#34;#update-inventory&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Update the stock level and inventory settings for a book.&lt;/p&gt;&#xA;&lt;h2 id=&#34;endpoint&#34;&gt;Endpoint&lt;a class=&#34;anchor&#34; href=&#34;#endpoint&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PATCH /v1/inventory/{bookId}&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;required-permissions&#34;&gt;Required Permissions&lt;a class=&#34;anchor&#34; href=&#34;#required-permissions&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;&lt;code&gt;admin&lt;/code&gt; API key.&lt;/p&gt;&#xA;&lt;h2 id=&#34;request-body&#34;&gt;Request Body&lt;a class=&#34;anchor&#34; href=&#34;#request-body&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;stock&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;reorderLevel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;15&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;reorderQuantity&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;75&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;warehouseLocation&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Section B, Shelf 1&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;notes&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Restocked from supplier order #PO-2025-089&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;request-fields&#34;&gt;Request Fields&lt;a class=&#34;anchor&#34; href=&#34;#request-fields&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Field&lt;/th&gt;&#xA;          &lt;th&gt;Type&lt;/th&gt;&#xA;          &lt;th&gt;Required&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;stock&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;No&lt;/td&gt;&#xA;          &lt;td&gt;Set absolute stock level&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;adjustment&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;No&lt;/td&gt;&#xA;          &lt;td&gt;Add or subtract from current stock (positive or negative)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;reorderLevel&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;No&lt;/td&gt;&#xA;          &lt;td&gt;Minimum stock before reorder alert&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;reorderQuantity&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;integer&lt;/td&gt;&#xA;          &lt;td&gt;No&lt;/td&gt;&#xA;          &lt;td&gt;Quantity to reorder&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;warehouseLocation&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;string&lt;/td&gt;&#xA;          &lt;td&gt;No&lt;/td&gt;&#xA;          &lt;td&gt;Physical warehouse location&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;string&lt;/td&gt;&#xA;          &lt;td&gt;No&lt;/td&gt;&#xA;          &lt;td&gt;Reason for stock change (for audit log)&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Use either &lt;code&gt;stock&lt;/code&gt; (absolute) or &lt;code&gt;adjustment&lt;/code&gt; (relative), not both.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

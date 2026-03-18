@@ -1,124 +1,1459 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Common Use Cases#This guide provides complete examples for the most common BookStore API integration scenarios.
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Common Use Cases#This guide provides complete examples for the most common BookStore API integration scenarios.
 Use Case 1 — Build a Book Search Page#Fetch books with filtering and display them to users.
-async function searchBooks(query, category, page = 1) { const params = new URLSearchParams({ search: query, page, perPage: 20, sort: 'averageRating', order: 'desc' }); if (category) params.set('category', category); const res = await fetch(`${BASE_URL}/books?${params}`, { headers: { 'Authorization': `Bearer ${API_KEY}` } }); return res.json(); } const results = await searchBooks('gatsby', 'Fiction'); results.data.forEach(book => { console.log(`${book.title} by ${book.author.name} — $${book.price}`); });Use Case 2 — Place an Order#Complete order placement flow with stock checking and error handling.
-"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#2e3440"><meta name=color-scheme content="light dark"><meta property="og:url" content="/docs/guides/integration/use-cases/"><meta property="og:site_name" content="BookStore API Documentation"><meta property="og:title" content="BookStore API Documentation"><meta property="og:description" content="Common Use Cases#This guide provides complete examples for the most common BookStore API integration scenarios.
+async function searchBooks(query, category, page = 1) { const params = new URLSearchParams({ search: query, page, perPage: 20, sort: &#39;averageRating&#39;, order: &#39;desc&#39; }); if (category) params.set(&#39;category&#39;, category); const res = await fetch(`${BASE_URL}/books?${params}`, { headers: { &#39;Authorization&#39;: `Bearer ${API_KEY}` } }); return res.json(); } const results = await searchBooks(&#39;gatsby&#39;, &#39;Fiction&#39;); results.data.forEach(book =&gt; { console.log(`${book.title} by ${book.author.name} — $${book.price}`); });Use Case 2 — Place an Order#Complete order placement flow with stock checking and error handling.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="//localhost:1313/docs/guides/integration/use-cases/">
+  <meta property="og:site_name" content="BookStore API Documentation">
+  <meta property="og:title" content="BookStore API Documentation">
+  <meta property="og:description" content="Common Use Cases#This guide provides complete examples for the most common BookStore API integration scenarios.
 Use Case 1 — Build a Book Search Page#Fetch books with filtering and display them to users.
-async function searchBooks(query, category, page = 1) { const params = new URLSearchParams({ search: query, page, perPage: 20, sort: 'averageRating', order: 'desc' }); if (category) params.set('category', category); const res = await fetch(`${BASE_URL}/books?${params}`, { headers: { 'Authorization': `Bearer ${API_KEY}` } }); return res.json(); } const results = await searchBooks('gatsby', 'Fiction'); results.data.forEach(book => { console.log(`${book.title} by ${book.author.name} — $${book.price}`); });Use Case 2 — Place an Order#Complete order placement flow with stock checking and error handling."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta itemprop=name content="BookStore API Documentation"><meta itemprop=description content="Common Use Cases#This guide provides complete examples for the most common BookStore API integration scenarios.
+async function searchBooks(query, category, page = 1) { const params = new URLSearchParams({ search: query, page, perPage: 20, sort: &#39;averageRating&#39;, order: &#39;desc&#39; }); if (category) params.set(&#39;category&#39;, category); const res = await fetch(`${BASE_URL}/books?${params}`, { headers: { &#39;Authorization&#39;: `Bearer ${API_KEY}` } }); return res.json(); } const results = await searchBooks(&#39;gatsby&#39;, &#39;Fiction&#39;); results.data.forEach(book =&gt; { console.log(`${book.title} by ${book.author.name} — $${book.price}`); });Use Case 2 — Place an Order#Complete order placement flow with stock checking and error handling.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+
+  <meta itemprop="name" content="BookStore API Documentation">
+  <meta itemprop="description" content="Common Use Cases#This guide provides complete examples for the most common BookStore API integration scenarios.
 Use Case 1 — Build a Book Search Page#Fetch books with filtering and display them to users.
-async function searchBooks(query, category, page = 1) { const params = new URLSearchParams({ search: query, page, perPage: 20, sort: 'averageRating', order: 'desc' }); if (category) params.set('category', category); const res = await fetch(`${BASE_URL}/books?${params}`, { headers: { 'Authorization': `Bearer ${API_KEY}` } }); return res.json(); } const results = await searchBooks('gatsby', 'Fiction'); results.data.forEach(book => { console.log(`${book.title} by ${book.author.name} — $${book.price}`); });Use Case 2 — Place an Order#Complete order placement flow with stock checking and error handling."><meta itemprop=wordCount content="381"><title>Use Cases | BookStore API Documentation</title><link rel=icon href=/favicon.png><link rel=manifest href=/manifest.json><link rel=canonical href=/docs/guides/integration/use-cases/><link rel=stylesheet href=/book.min.b267f830fdf65302ecc1702a1178d4f25aa783409b3a25098f3404dd24f37a4d.css><script defer src=/fuse.min.js></script><script defer src=/en.search.min.b12adfcaaed67f6c08a9af3cc83758a51073ff773e6462fc5328a5f61deb7722.js></script></head><body dir=ltr class="book-kind-page book-type-docs"><input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>BookStore API Documentation</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul><li><a>Getting Started</a><ul><li><a>Setup</a><ul><li><a href=/docs/getting-started/setup/environment-setup/>Environment Setup</a></li><li><a href=/docs/getting-started/setup/introduction/>Introduction</a></li><li><a href=/docs/getting-started/setup/testing/>Testing</a></li></ul></li><li><a>Authentication</a><ul><li><a href=/docs/getting-started/authentication/authentication/>Authentication</a></li><li><a href=/docs/getting-started/authentication/rate-limiting/>Rate Limiting</a></li></ul></li><li><a>Basics</a><ul><li><a href=/docs/getting-started/basics/errors/>Errors</a></li><li><a href=/docs/getting-started/basics/quickstart/>Quickstart</a></li></ul></li></ul></li><li><a>Endpoints</a><ul><li><a>Books</a><ul><li><a href=/docs/endpoints/books/create-book/>Create Book</a></li><li><a href=/docs/endpoints/books/delete-book/>Delete Book</a></li><li><a href=/docs/endpoints/books/get-book/>Get Book</a></li><li><a href=/docs/endpoints/books/list-books/>List Books</a></li><li><a href=/docs/endpoints/books/update-book/>Update Book</a></li></ul></li><li><a>Authors</a><ul><li><a href=/docs/endpoints/authors/create-author/>Create Author</a></li><li><a href=/docs/endpoints/authors/delete-author/>Delete Author</a></li><li><a href=/docs/endpoints/authors/get-author/>Get Author</a></li><li><a href=/docs/endpoints/authors/list-authors/>List Authors</a></li><li><a href=/docs/endpoints/authors/update-author/>Update Author</a></li></ul></li><li><a>Orders</a><ul><li><a href=/docs/endpoints/orders/cancel-order/>Cancel Order</a></li><li><a href=/docs/endpoints/orders/create-order/>Create Order</a></li><li><a href=/docs/endpoints/orders/get-order/>Get Order</a></li><li><a href=/docs/endpoints/orders/list-orders/>List Orders</a></li><li><a href=/docs/endpoints/orders/update-order/>Update Order</a></li></ul></li><li><a>Customers</a><ul><li><a href=/docs/endpoints/customers/create-customer/>Create Customer</a></li><li><a href=/docs/endpoints/customers/get-customer/>Get Customer</a></li><li><a href=/docs/endpoints/customers/list-customers/>List Customers</a></li><li><a href=/docs/endpoints/customers/update-customer/>Update Customer</a></li></ul></li><li><a>Categories</a><ul><li><a href=/docs/endpoints/categories/create-category/>Create Category</a></li><li><a href=/docs/endpoints/categories/get-category/>Get Category</a></li><li><a href=/docs/endpoints/categories/list-categories/>List Categories</a></li></ul></li><li><a>Reviews</a><ul><li><a href=/docs/endpoints/reviews/create-review/>Create Review</a></li><li><a href=/docs/endpoints/reviews/delete-review/>Delete Review</a></li><li><a href=/docs/endpoints/reviews/list-reviews/>List Reviews</a></li></ul></li><li><a>Inventory</a><ul><li><a href=/docs/endpoints/inventory/get-inventory/>Get Inventory</a></li><li><a href=/docs/endpoints/inventory/update-inventory/>Update Inventory</a></li></ul></li></ul></li><li><a>Guides</a><ul><li><a>API Usage</a><ul><li><a href=/docs/guides/api-usage/filtering/>Filtering</a></li><li><a href=/docs/guides/api-usage/pagination/>Pagination</a></li><li><a href=/docs/guides/api-usage/sorting/>Sorting</a></li></ul></li><li><a>Integration</a><ul><li><a href=/docs/guides/integration/best-practices/>Best Practices</a></li><li><a href=/docs/guides/integration/sdks/>Sdks</a></li><li><a href=/docs/guides/integration/use-cases/ class=active>Use Cases</a></li><li><a href=/docs/guides/integration/webhooks/>Webhooks</a></li></ul></li></ul></li><li><a>Openapi</a><ul><li><a>Specification</a><ul><li><a href=/docs/openapi/specification/overview/>Overview</a></li><li><a href=/docs/openapi/specification/spec/>Spec</a></li><li><a href=/docs/openapi/specification/testing/>Testing</a></li></ul></li></ul></li><li><a>Reference</a><ul><li><a>Data Models</a><ul><li><a href=/docs/reference/data-models/glossary/>Glossary</a></li><li><a href=/docs/reference/data-models/schemas/>Schemas</a></li><li><a href=/docs/reference/data-models/status-codes/>Status Codes</a></li></ul></li><li><a>Support</a><ul><li><a href=/docs/reference/support/changelog/>Changelog</a></li><li><a href=/docs/reference/support/faq/>Faq</a></li></ul></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>Use Cases</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><a href=#use-case-1--build-a-book-search-page>Use Case 1 — Build a Book Search Page</a></li><li><a href=#use-case-2--place-an-order>Use Case 2 — Place an Order</a></li><li><a href=#use-case-3--inventory-management-dashboard>Use Case 3 — Inventory Management Dashboard</a></li><li><a href=#use-case-4--order-notification-system-with-webhooks>Use Case 4 — Order Notification System with Webhooks</a></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=common-use-cases>Common Use Cases<a class=anchor href=#common-use-cases>#</a></h1><p>This guide provides complete examples for the most common BookStore API integration scenarios.</p><h2 id=use-case-1--build-a-book-search-page>Use Case 1 — Build a Book Search Page<a class=anchor href=#use-case-1--build-a-book-search-page>#</a></h2><p>Fetch books with filtering and display them to users.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>searchBooks</span>(<span style=color:#a6e22e>query</span>, <span style=color:#a6e22e>category</span>, <span style=color:#a6e22e>page</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>params</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>URLSearchParams</span>({
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>search</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>query</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>page</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>perPage</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>20</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>sort</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;averageRating&#39;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>order</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;desc&#39;</span>
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>category</span>) <span style=color:#a6e22e>params</span>.<span style=color:#a6e22e>set</span>(<span style=color:#e6db74>&#39;category&#39;</span>, <span style=color:#a6e22e>category</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>res</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>fetch</span>(<span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>BASE_URL</span><span style=color:#e6db74>}</span><span style=color:#e6db74>/books?</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>params</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>, {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>headers</span><span style=color:#f92672>:</span> { <span style=color:#e6db74>&#39;Authorization&#39;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>`Bearer </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>API_KEY</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span> }
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>json</span>();
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>results</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>searchBooks</span>(<span style=color:#e6db74>&#39;gatsby&#39;</span>, <span style=color:#e6db74>&#39;Fiction&#39;</span>);
-</span></span><span style=display:flex><span><span style=color:#a6e22e>results</span>.<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>forEach</span>(<span style=color:#a6e22e>book</span> =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>book</span>.<span style=color:#a6e22e>title</span><span style=color:#e6db74>}</span><span style=color:#e6db74> by </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>book</span>.<span style=color:#a6e22e>author</span>.<span style=color:#a6e22e>name</span><span style=color:#e6db74>}</span><span style=color:#e6db74> — $</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>book</span>.<span style=color:#a6e22e>price</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
-</span></span><span style=display:flex><span>});</span></span></code></pre></div><h2 id=use-case-2--place-an-order>Use Case 2 — Place an Order<a class=anchor href=#use-case-2--place-an-order>#</a></h2><p>Complete order placement flow with stock checking and error handling.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>placeOrder</span>(<span style=color:#a6e22e>customerId</span>, <span style=color:#a6e22e>cartItems</span>, <span style=color:#a6e22e>shippingAddress</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// First check stock for all items
-</span></span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>item</span> <span style=color:#66d9ef>of</span> <span style=color:#a6e22e>cartItems</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>inv</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>fetch</span>(<span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>BASE_URL</span><span style=color:#e6db74>}</span><span style=color:#e6db74>/inventory/</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>bookId</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>, {
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>headers</span><span style=color:#f92672>:</span> { <span style=color:#e6db74>&#39;Authorization&#39;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>`Bearer </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>API_KEY</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span> }
-</span></span><span style=display:flex><span>    }).<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>r</span> =&gt; <span style=color:#a6e22e>r</span>.<span style=color:#a6e22e>json</span>());
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>inv</span>.<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>available</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>quantity</span>) {
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> Error(<span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>bookId</span><span style=color:#e6db74>}</span><span style=color:#e6db74> has only </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>inv</span>.<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>available</span><span style=color:#e6db74>}</span><span style=color:#e6db74> copies available.`</span>);
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Place the order
-</span></span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>res</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>fetch</span>(<span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>BASE_URL</span><span style=color:#e6db74>}</span><span style=color:#e6db74>/orders`</span>, {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>method</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;POST&#39;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>headers</span><span style=color:#f92672>:</span> {
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#39;Authorization&#39;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>`Bearer </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>API_KEY</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#39;Content-Type&#39;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;application/json&#39;</span>
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>body</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>({ <span style=color:#a6e22e>customerId</span>, <span style=color:#a6e22e>items</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>cartItems</span>, <span style=color:#a6e22e>shippingAddress</span> })
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>ok</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>error</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>json</span>();
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> Error(<span style=color:#a6e22e>error</span>.<span style=color:#a6e22e>error</span>.<span style=color:#a6e22e>message</span>);
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>json</span>();
-</span></span><span style=display:flex><span>}</span></span></code></pre></div><h2 id=use-case-3--inventory-management-dashboard>Use Case 3 — Inventory Management Dashboard<a class=anchor href=#use-case-3--inventory-management-dashboard>#</a></h2><p>Monitor and update stock levels.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_low_stock_books</span>(threshold<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>):
-</span></span><span style=display:flex><span>    books <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>    page <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> <span style=color:#66d9ef>True</span>:
-</span></span><span style=display:flex><span>        response <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>{</span>BASE_URL<span style=color:#e6db74>}</span><span style=color:#e6db74>/books&#39;</span>,
-</span></span><span style=display:flex><span>            params<span style=color:#f92672>=</span>{<span style=color:#e6db74>&#39;page&#39;</span>: page, <span style=color:#e6db74>&#39;perPage&#39;</span>: <span style=color:#ae81ff>100</span>},
-</span></span><span style=display:flex><span>            headers<span style=color:#f92672>=</span>headers
-</span></span><span style=display:flex><span>        )<span style=color:#f92672>.</span>json()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> book <span style=color:#f92672>in</span> response[<span style=color:#e6db74>&#39;data&#39;</span>]:
-</span></span><span style=display:flex><span>            inv <span style=color:#f92672>=</span> requests<span style=color:#f92672>.</span>get(
-</span></span><span style=display:flex><span>                <span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>{</span>BASE_URL<span style=color:#e6db74>}</span><span style=color:#e6db74>/inventory/</span><span style=color:#e6db74>{</span>book[<span style=color:#e6db74>&#34;id&#34;</span>]<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>,
-</span></span><span style=display:flex><span>                headers<span style=color:#f92672>=</span>headers
-</span></span><span style=display:flex><span>            )<span style=color:#f92672>.</span>json()
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> inv[<span style=color:#e6db74>&#39;data&#39;</span>][<span style=color:#e6db74>&#39;available&#39;</span>] <span style=color:#f92672>&lt;</span> threshold:
-</span></span><span style=display:flex><span>                books<span style=color:#f92672>.</span>append({
-</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;id&#39;</span>: book[<span style=color:#e6db74>&#39;id&#39;</span>],
-</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;title&#39;</span>: book[<span style=color:#e6db74>&#39;title&#39;</span>],
-</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;available&#39;</span>: inv[<span style=color:#e6db74>&#39;data&#39;</span>][<span style=color:#e6db74>&#39;available&#39;</span>]
-</span></span><span style=display:flex><span>                })
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> page <span style=color:#f92672>&gt;=</span> response[<span style=color:#e6db74>&#39;pagination&#39;</span>][<span style=color:#e6db74>&#39;totalPages&#39;</span>]:
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>break</span>
-</span></span><span style=display:flex><span>        page <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> sorted(books, key<span style=color:#f92672>=</span><span style=color:#66d9ef>lambda</span> x: x[<span style=color:#e6db74>&#39;available&#39;</span>])
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>low_stock <span style=color:#f92672>=</span> get_low_stock_books(threshold<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> book <span style=color:#f92672>in</span> low_stock:
-</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;LOW STOCK: </span><span style=color:#e6db74>{</span>book[<span style=color:#e6db74>&#39;title&#39;</span>]<span style=color:#e6db74>}</span><span style=color:#e6db74> — </span><span style=color:#e6db74>{</span>book[<span style=color:#e6db74>&#39;available&#39;</span>]<span style=color:#e6db74>}</span><span style=color:#e6db74> remaining&#34;</span>)</span></span></code></pre></div><h2 id=use-case-4--order-notification-system-with-webhooks>Use Case 4 — Order Notification System with Webhooks<a class=anchor href=#use-case-4--order-notification-system-with-webhooks>#</a></h2><p>Receive and process order events in real time.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>express</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;express&#39;</span>);
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>crypto</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;crypto&#39;</span>);
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>app</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>express</span>();
-</span></span><span style=display:flex><span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>express</span>.<span style=color:#a6e22e>json</span>());
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>post</span>(<span style=color:#e6db74>&#39;/webhooks/bookstore&#39;</span>, (<span style=color:#a6e22e>req</span>, <span style=color:#a6e22e>res</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Verify signature
-</span></span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>sig</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>req</span>.<span style=color:#a6e22e>headers</span>[<span style=color:#e6db74>&#39;bookstore-signature&#39;</span>];
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>body</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>(<span style=color:#a6e22e>req</span>.<span style=color:#a6e22e>body</span>);
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>expected</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;sha256=&#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>crypto</span>
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>createHmac</span>(<span style=color:#e6db74>&#39;sha256&#39;</span>, <span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>env</span>.<span style=color:#a6e22e>WEBHOOK_SECRET</span>)
-</span></span><span style=display:flex><span>    .<span style=color:#a6e22e>update</span>(<span style=color:#a6e22e>body</span>).<span style=color:#a6e22e>digest</span>(<span style=color:#e6db74>&#39;hex&#39;</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>sig</span> <span style=color:#f92672>!==</span> <span style=color:#a6e22e>expected</span>) <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>status</span>(<span style=color:#ae81ff>401</span>).<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;Invalid signature&#39;</span>);
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>type</span>, <span style=color:#a6e22e>data</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>req</span>.<span style=color:#a6e22e>body</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>switch</span> (<span style=color:#a6e22e>type</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;order.created&#39;</span><span style=color:#f92672>:</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`New order </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>order</span>.<span style=color:#a6e22e>id</span><span style=color:#e6db74>}</span><span style=color:#e6db74> — $</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>order</span>.<span style=color:#a6e22e>totalAmount</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>sendConfirmationEmail</span>(<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>order</span>);
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;order.shipped&#39;</span><span style=color:#f92672>:</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`Order </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>order</span>.<span style=color:#a6e22e>id</span><span style=color:#e6db74>}</span><span style=color:#e6db74> shipped — tracking: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>order</span>.<span style=color:#a6e22e>trackingNumber</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>sendShippingNotification</span>(<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>order</span>);
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;inventory.low&#39;</span><span style=color:#f92672>:</span>
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`Low stock alert: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>book</span>.<span style=color:#a6e22e>title</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>notifyProcurementTeam</span>(<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>book</span>);
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>break</span>;
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>sendStatus</span>(<span style=color:#ae81ff>200</span>);
-</span></span><span style=display:flex><span>});
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>listen</span>(<span style=color:#ae81ff>4000</span>);</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class="flex flex-wrap justify-between"><span><a href=/docs/guides/integration/sdks/ class="flex align-center"><img src=/icons/backward.svg class=book-icon alt=Backward>
-<span>Sdks</span>
-</a></span><span><a href=/docs/guides/integration/webhooks/ class="flex align-center"><span>Webhooks</span>
-<img src=/icons/forward.svg class=book-icon alt=Forward></a></span></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#use-case-1--build-a-book-search-page>Use Case 1 — Build a Book Search Page</a></li><li><a href=#use-case-2--place-an-order>Use Case 2 — Place an Order</a></li><li><a href=#use-case-3--inventory-management-dashboard>Use Case 3 — Inventory Management Dashboard</a></li><li><a href=#use-case-4--order-notification-system-with-webhooks>Use Case 4 — Order Notification System with Webhooks</a></li></ul></nav></div></aside></main></body></html>
+async function searchBooks(query, category, page = 1) { const params = new URLSearchParams({ search: query, page, perPage: 20, sort: &#39;averageRating&#39;, order: &#39;desc&#39; }); if (category) params.set(&#39;category&#39;, category); const res = await fetch(`${BASE_URL}/books?${params}`, { headers: { &#39;Authorization&#39;: `Bearer ${API_KEY}` } }); return res.json(); } const results = await searchBooks(&#39;gatsby&#39;, &#39;Fiction&#39;); results.data.forEach(book =&gt; { console.log(`${book.title} by ${book.author.name} — $${book.price}`); });Use Case 2 — Place an Order#Complete order placement flow with stock checking and error handling.">
+  <meta itemprop="wordCount" content="381">
+
+<title>Use Cases | BookStore API Documentation</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="//localhost:1313/docs/guides/integration/use-cases/">
+<link rel="stylesheet" href="/book.min.b267f830fdf65302ecc1702a1178d4f25aa783409b3a25098f3404dd24f37a4d.css" integrity="sha256-smf4MP32UwLswXAqEXjU8lqng0CbOiUJjzQE3STzek0=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.adaa99bb98a16c76afa3fec17efe5c71d988bb87f04e7cb2edc0fe20f6836e00.js" integrity="sha256-raqZu5ihbHavo/7Bfv5ccdmIu4fwTnyy7cD&#43;IPaDbgA=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-docs">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>BookStore API Documentation</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Getting Started</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Setup</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/setup/environment-setup/" class="">
+      Environment Setup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/setup/introduction/" class="">
+      Introduction</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/setup/testing/" class="">
+      Testing</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Authentication</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/authentication/authentication/" class="">
+      Authentication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/authentication/rate-limiting/" class="">
+      Rate Limiting</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Basics</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/basics/errors/" class="">
+      Errors</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/getting-started/basics/quickstart/" class="">
+      Quickstart</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Endpoints</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Books</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/create-book/" class="">
+      Create Book</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/delete-book/" class="">
+      Delete Book</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/get-book/" class="">
+      Get Book</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/list-books/" class="">
+      List Books</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/books/update-book/" class="">
+      Update Book</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Authors</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/create-author/" class="">
+      Create Author</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/delete-author/" class="">
+      Delete Author</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/get-author/" class="">
+      Get Author</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/list-authors/" class="">
+      List Authors</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/authors/update-author/" class="">
+      Update Author</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Orders</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/cancel-order/" class="">
+      Cancel Order</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/create-order/" class="">
+      Create Order</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/get-order/" class="">
+      Get Order</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/list-orders/" class="">
+      List Orders</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/orders/update-order/" class="">
+      Update Order</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Customers</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/customers/create-customer/" class="">
+      Create Customer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/customers/get-customer/" class="">
+      Get Customer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/customers/list-customers/" class="">
+      List Customers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/customers/update-customer/" class="">
+      Update Customer</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Categories</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/categories/create-category/" class="">
+      Create Category</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/categories/get-category/" class="">
+      Get Category</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/categories/list-categories/" class="">
+      List Categories</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Reviews</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/reviews/create-review/" class="">
+      Create Review</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/reviews/delete-review/" class="">
+      Delete Review</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/reviews/list-reviews/" class="">
+      List Reviews</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Inventory</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/inventory/get-inventory/" class="">
+      Get Inventory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/endpoints/inventory/update-inventory/" class="">
+      Update Inventory</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Guides</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      API Usage</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/api-usage/filtering/" class="">
+      Filtering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/api-usage/pagination/" class="">
+      Pagination</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/api-usage/sorting/" class="">
+      Sorting</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Integration</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/integration/best-practices/" class="">
+      Best Practices</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/integration/sdks/" class="">
+      Sdks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/integration/use-cases/" class="active">
+      Use Cases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/guides/integration/webhooks/" class="">
+      Webhooks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Openapi</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Specification</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/openapi/specification/overview/" class="">
+      Overview</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/openapi/specification/spec/" class="">
+      Spec</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/openapi/specification/testing/" class="">
+      Testing</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Reference</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Data Models</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/data-models/glossary/" class="">
+      Glossary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/data-models/schemas/" class="">
+      Schemas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/data-models/status-codes/" class="">
+      Status Codes</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Support</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/support/changelog/" class="">
+      Changelog</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/reference/support/faq/" class="">
+      Faq</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/docs-v1/">📄 v1.0 (archived)</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Use Cases</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#use-case-1--build-a-book-search-page">Use Case 1 — Build a Book Search Page</a></li>
+    <li><a href="#use-case-2--place-an-order">Use Case 2 — Place an Order</a></li>
+    <li><a href="#use-case-3--inventory-management-dashboard">Use Case 3 — Inventory Management Dashboard</a></li>
+    <li><a href="#use-case-4--order-notification-system-with-webhooks">Use Case 4 — Order Notification System with Webhooks</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="common-use-cases">Common Use Cases<a class="anchor" href="#common-use-cases">#</a></h1>
+<p>This guide provides complete examples for the most common BookStore API integration scenarios.</p>
+<h2 id="use-case-1--build-a-book-search-page">Use Case 1 — Build a Book Search Page<a class="anchor" href="#use-case-1--build-a-book-search-page">#</a></h2>
+<p>Fetch books with filtering and display them to users.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">searchBooks</span>(<span style="color:#a6e22e">query</span>, <span style="color:#a6e22e">category</span>, <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">search</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">query</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">page</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">perPage</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sort</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;averageRating&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">order</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;desc&#39;</span>
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">category</span>) <span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;category&#39;</span>, <span style="color:#a6e22e">category</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">BASE_URL</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/books?</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">params</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">API_KEY</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> }
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">results</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">searchBooks</span>(<span style="color:#e6db74">&#39;gatsby&#39;</span>, <span style="color:#e6db74">&#39;Fiction&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">book</span> =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">title</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> by </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">author</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> — $</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">price</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>});</span></span></code></pre></div><h2 id="use-case-2--place-an-order">Use Case 2 — Place an Order<a class="anchor" href="#use-case-2--place-an-order">#</a></h2>
+<p>Complete order placement flow with stock checking and error handling.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">placeOrder</span>(<span style="color:#a6e22e">customerId</span>, <span style="color:#a6e22e">cartItems</span>, <span style="color:#a6e22e">shippingAddress</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// First check stock for all items
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">item</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">cartItems</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">inv</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">BASE_URL</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/inventory/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">bookId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>, {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">API_KEY</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> }
+</span></span><span style="display:flex;"><span>    }).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">r</span> =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">json</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">inv</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">available</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">quantity</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">bookId</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> has only </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">inv</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">available</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> copies available.`</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Place the order
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">BASE_URL</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/orders`</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">API_KEY</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">customerId</span>, <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cartItems</span>, <span style="color:#a6e22e">shippingAddress</span> })
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">error</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div><h2 id="use-case-3--inventory-management-dashboard">Use Case 3 — Inventory Management Dashboard<a class="anchor" href="#use-case-3--inventory-management-dashboard">#</a></h2>
+<p>Monitor and update stock levels.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_low_stock_books</span>(threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>    books <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    page <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>BASE_URL<span style="color:#e6db74">}</span><span style="color:#e6db74">/books&#39;</span>,
+</span></span><span style="display:flex;"><span>            params<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;page&#39;</span>: page, <span style="color:#e6db74">&#39;perPage&#39;</span>: <span style="color:#ae81ff">100</span>},
+</span></span><span style="display:flex;"><span>            headers<span style="color:#f92672">=</span>headers
+</span></span><span style="display:flex;"><span>        )<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> book <span style="color:#f92672">in</span> response[<span style="color:#e6db74">&#39;data&#39;</span>]:
+</span></span><span style="display:flex;"><span>            inv <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>BASE_URL<span style="color:#e6db74">}</span><span style="color:#e6db74">/inventory/</span><span style="color:#e6db74">{</span>book[<span style="color:#e6db74">&#34;id&#34;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>,
+</span></span><span style="display:flex;"><span>                headers<span style="color:#f92672">=</span>headers
+</span></span><span style="display:flex;"><span>            )<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> inv[<span style="color:#e6db74">&#39;data&#39;</span>][<span style="color:#e6db74">&#39;available&#39;</span>] <span style="color:#f92672">&lt;</span> threshold:
+</span></span><span style="display:flex;"><span>                books<span style="color:#f92672">.</span>append({
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;id&#39;</span>: book[<span style="color:#e6db74">&#39;id&#39;</span>],
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;title&#39;</span>: book[<span style="color:#e6db74">&#39;title&#39;</span>],
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;available&#39;</span>: inv[<span style="color:#e6db74">&#39;data&#39;</span>][<span style="color:#e6db74">&#39;available&#39;</span>]
+</span></span><span style="display:flex;"><span>                })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> page <span style="color:#f92672">&gt;=</span> response[<span style="color:#e6db74">&#39;pagination&#39;</span>][<span style="color:#e6db74">&#39;totalPages&#39;</span>]:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        page <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sorted(books, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;available&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>low_stock <span style="color:#f92672">=</span> get_low_stock_books(threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> book <span style="color:#f92672">in</span> low_stock:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;LOW STOCK: </span><span style="color:#e6db74">{</span>book[<span style="color:#e6db74">&#39;title&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> — </span><span style="color:#e6db74">{</span>book[<span style="color:#e6db74">&#39;available&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> remaining&#34;</span>)</span></span></code></pre></div><h2 id="use-case-4--order-notification-system-with-webhooks">Use Case 4 — Order Notification System with Webhooks<a class="anchor" href="#use-case-4--order-notification-system-with-webhooks">#</a></h2>
+<p>Receive and process order events in real time.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">crypto</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;crypto&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">express</span>.<span style="color:#a6e22e">json</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/webhooks/bookstore&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Verify signature
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">headers</span>[<span style="color:#e6db74">&#39;bookstore-signature&#39;</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">body</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">body</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expected</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sha256=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">crypto</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">createHmac</span>(<span style="color:#e6db74">&#39;sha256&#39;</span>, <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">WEBHOOK_SECRET</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">body</span>).<span style="color:#a6e22e">digest</span>(<span style="color:#e6db74">&#39;hex&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">sig</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">expected</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">401</span>).<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;Invalid signature&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">data</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">body</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">type</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;order.created&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`New order </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> — $</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">totalAmount</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">sendConfirmationEmail</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">order</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;order.shipped&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Order </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> shipped — tracking: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">order</span>.<span style="color:#a6e22e">trackingNumber</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">sendShippingNotification</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">order</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;inventory.low&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Low stock alert: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">title</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">notifyProcurementTeam</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">book</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">sendStatus</span>(<span style="color:#ae81ff">200</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">4000</span>);</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+
+
+
+
+  
+  
+  
+  <div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/docs/guides/integration/sdks/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Sdks</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/docs/guides/integration/webhooks/" class="flex align-center">
+        <span>Webhooks</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+  
+
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#use-case-1--build-a-book-search-page">Use Case 1 — Build a Book Search Page</a></li>
+    <li><a href="#use-case-2--place-an-order">Use Case 2 — Place an Order</a></li>
+    <li><a href="#use-case-3--inventory-management-dashboard">Use Case 3 — Inventory Management Dashboard</a></li>
+    <li><a href="#use-case-4--order-notification-system-with-webhooks">Use Case 4 — Order Notification System with Webhooks</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

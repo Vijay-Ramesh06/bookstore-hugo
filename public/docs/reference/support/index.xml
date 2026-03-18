@@ -1,38 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BookStore API Documentation</title><link>/docs/reference/support/</link><description>Recent content on BookStore API Documentation</description><generator>Hugo</generator><language>en-us</language><atom:link href="/docs/reference/support/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>/docs/reference/support/changelog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/reference/support/changelog/</guid><description>&lt;h1 id="api-changelog"&gt;API Changelog&lt;a class="anchor" href="#api-changelog"&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;This page documents all changes to the BookStore API, including new features, improvements, and breaking changes.&lt;/p&gt;
-&lt;h2 id="v120--2025-09-01"&gt;v1.2.0 — 2025-09-01&lt;a class="anchor" href="#v120--2025-09-01"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;h3 id="new-features"&gt;New Features&lt;a class="anchor" href="#new-features"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Review Filtering&lt;/strong&gt;: The &lt;code&gt;GET /v1/books/{bookId}/reviews&lt;/code&gt; endpoint now supports filtering by &lt;code&gt;rating&lt;/code&gt; and &lt;code&gt;verified&lt;/code&gt; query parameters.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Inventory Alerts Webhook&lt;/strong&gt;: New webhook event &lt;code&gt;inventory.low&lt;/code&gt; fires when a book&amp;rsquo;s stock falls below its &lt;code&gt;reorderLevel&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Bulk Book Update&lt;/strong&gt;: New endpoint &lt;code&gt;PATCH /v1/books/bulk&lt;/code&gt; allows updating up to 50 books in a single request.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Author Books Endpoint&lt;/strong&gt;: New endpoint &lt;code&gt;GET /v1/authors/{authorId}/books&lt;/code&gt; returns all books by a specific author with pagination.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="improvements"&gt;Improvements&lt;a class="anchor" href="#improvements"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Improved search relevance for the &lt;code&gt;search&lt;/code&gt; query parameter on &lt;code&gt;/v1/books&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Order response now includes &lt;code&gt;estimatedDelivery&lt;/code&gt; date&lt;/li&gt;
-&lt;li&gt;Customer list endpoint now returns &lt;code&gt;totalSpent&lt;/code&gt; and &lt;code&gt;lastOrderDate&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;API response times improved by approximately 15% for list endpoints&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="bug-fixes"&gt;Bug Fixes&lt;a class="anchor" href="#bug-fixes"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Fixed: Category &lt;code&gt;bookCount&lt;/code&gt; not updating correctly after book deletion&lt;/li&gt;
-&lt;li&gt;Fixed: Reviews from deleted customers causing 500 errors on book detail endpoint&lt;/li&gt;
-&lt;li&gt;Fixed: Pagination &lt;code&gt;totalPages&lt;/code&gt; rounding error for datasets with exact multiples of &lt;code&gt;perPage&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="v110--2025-04-15"&gt;v1.1.0 — 2025-04-15&lt;a class="anchor" href="#v110--2025-04-15"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;h3 id="new-features-1"&gt;New Features&lt;a class="anchor" href="#new-features-1"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Webhook Support&lt;/strong&gt;: Full webhook system with event subscriptions and signature verification&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Archive Endpoint&lt;/strong&gt;: Books can now be archived instead of deleted using &lt;code&gt;POST /v1/books/{bookId}/archive&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Review Summary&lt;/strong&gt;: Book detail response now includes rating distribution breakdown&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Order Tracking&lt;/strong&gt;: Orders now include &lt;code&gt;trackingNumber&lt;/code&gt; field once shipped&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="breaking-changes"&gt;Breaking Changes&lt;a class="anchor" href="#breaking-changes"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;None in this release.&lt;/p&gt;</description></item><item><title/><link>/docs/reference/support/faq/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/reference/support/faq/</guid><description>&lt;h1 id="frequently-asked-questions"&gt;Frequently Asked Questions&lt;a class="anchor" href="#frequently-asked-questions"&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;h2 id="general"&gt;General&lt;a class="anchor" href="#general"&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;h3 id="is-the-bookstore-api-free-to-use"&gt;Is the BookStore API free to use?&lt;a class="anchor" href="#is-the-bookstore-api-free-to-use"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;The API has a free tier allowing up to 60 requests per minute and 1,000 requests per day. Paid plans are available for higher volume. See the &lt;a href="../getting-started/rate-limiting.md"&gt;Rate Limiting guide&lt;/a&gt; for tier details.&lt;/p&gt;
-&lt;h3 id="can-i-use-the-api-for-commercial-projects"&gt;Can I use the API for commercial projects?&lt;a class="anchor" href="#can-i-use-the-api-for-commercial-projects"&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Yes. The BookStore API is available for commercial use on all paid plans. Review the Terms of Service at &lt;code&gt;https://developers.bookstore.example.com/terms&lt;/code&gt;.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BookStore API Documentation</title>
+    <link>//localhost:1313/docs/reference/support/</link>
+    <description>Recent content on BookStore API Documentation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="//localhost:1313/docs/reference/support/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>//localhost:1313/docs/reference/support/changelog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/reference/support/changelog/</guid>
+      <description>&lt;h1 id=&#34;api-changelog&#34;&gt;API Changelog&lt;a class=&#34;anchor&#34; href=&#34;#api-changelog&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;This page documents all changes to the BookStore API, including new features, improvements, and breaking changes.&lt;/p&gt;&#xA;&lt;h2 id=&#34;v120--2025-09-01&#34;&gt;v1.2.0 — 2025-09-01&lt;a class=&#34;anchor&#34; href=&#34;#v120--2025-09-01&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;h3 id=&#34;new-features&#34;&gt;New Features&lt;a class=&#34;anchor&#34; href=&#34;#new-features&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Review Filtering&lt;/strong&gt;: The &lt;code&gt;GET /v1/books/{bookId}/reviews&lt;/code&gt; endpoint now supports filtering by &lt;code&gt;rating&lt;/code&gt; and &lt;code&gt;verified&lt;/code&gt; query parameters.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Inventory Alerts Webhook&lt;/strong&gt;: New webhook event &lt;code&gt;inventory.low&lt;/code&gt; fires when a book&amp;rsquo;s stock falls below its &lt;code&gt;reorderLevel&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Bulk Book Update&lt;/strong&gt;: New endpoint &lt;code&gt;PATCH /v1/books/bulk&lt;/code&gt; allows updating up to 50 books in a single request.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Author Books Endpoint&lt;/strong&gt;: New endpoint &lt;code&gt;GET /v1/authors/{authorId}/books&lt;/code&gt; returns all books by a specific author with pagination.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;improvements&#34;&gt;Improvements&lt;a class=&#34;anchor&#34; href=&#34;#improvements&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Improved search relevance for the &lt;code&gt;search&lt;/code&gt; query parameter on &lt;code&gt;/v1/books&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Order response now includes &lt;code&gt;estimatedDelivery&lt;/code&gt; date&lt;/li&gt;&#xA;&lt;li&gt;Customer list endpoint now returns &lt;code&gt;totalSpent&lt;/code&gt; and &lt;code&gt;lastOrderDate&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;API response times improved by approximately 15% for list endpoints&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug Fixes&lt;a class=&#34;anchor&#34; href=&#34;#bug-fixes&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Fixed: Category &lt;code&gt;bookCount&lt;/code&gt; not updating correctly after book deletion&lt;/li&gt;&#xA;&lt;li&gt;Fixed: Reviews from deleted customers causing 500 errors on book detail endpoint&lt;/li&gt;&#xA;&lt;li&gt;Fixed: Pagination &lt;code&gt;totalPages&lt;/code&gt; rounding error for datasets with exact multiples of &lt;code&gt;perPage&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;v110--2025-04-15&#34;&gt;v1.1.0 — 2025-04-15&lt;a class=&#34;anchor&#34; href=&#34;#v110--2025-04-15&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;h3 id=&#34;new-features-1&#34;&gt;New Features&lt;a class=&#34;anchor&#34; href=&#34;#new-features-1&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Webhook Support&lt;/strong&gt;: Full webhook system with event subscriptions and signature verification&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Archive Endpoint&lt;/strong&gt;: Books can now be archived instead of deleted using &lt;code&gt;POST /v1/books/{bookId}/archive&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Review Summary&lt;/strong&gt;: Book detail response now includes rating distribution breakdown&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Order Tracking&lt;/strong&gt;: Orders now include &lt;code&gt;trackingNumber&lt;/code&gt; field once shipped&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;breaking-changes&#34;&gt;Breaking Changes&lt;a class=&#34;anchor&#34; href=&#34;#breaking-changes&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;None in this release.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/docs/reference/support/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/reference/support/faq/</guid>
+      <description>&lt;h1 id=&#34;frequently-asked-questions&#34;&gt;Frequently Asked Questions&lt;a class=&#34;anchor&#34; href=&#34;#frequently-asked-questions&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;general&#34;&gt;General&lt;a class=&#34;anchor&#34; href=&#34;#general&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;h3 id=&#34;is-the-bookstore-api-free-to-use&#34;&gt;Is the BookStore API free to use?&lt;a class=&#34;anchor&#34; href=&#34;#is-the-bookstore-api-free-to-use&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;The API has a free tier allowing up to 60 requests per minute and 1,000 requests per day. Paid plans are available for higher volume. See the &lt;a href=&#34;../getting-started/rate-limiting.md&#34;&gt;Rate Limiting guide&lt;/a&gt; for tier details.&lt;/p&gt;&#xA;&lt;h3 id=&#34;can-i-use-the-api-for-commercial-projects&#34;&gt;Can I use the API for commercial projects?&lt;a class=&#34;anchor&#34; href=&#34;#can-i-use-the-api-for-commercial-projects&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xD;&#xA;&lt;p&gt;Yes. The BookStore API is available for commercial use on all paid plans. Review the Terms of Service at &lt;code&gt;https://developers.bookstore.example.com/terms&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

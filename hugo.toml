@@ -9,3 +9,8 @@ theme = "book"
   BookToC = true
   BookMenuBundle = false
   BookTheme = "auto"
+
+[[menu.after]]
+  name = "📄 v1.0 (archived)"
+  url = "/docs-v1/"
+  weight = 1
